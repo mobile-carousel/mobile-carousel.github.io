@@ -1,0 +1,7 @@
+{
+  "name": "mobile-carousel",
+  "short_name": "mobile-carousel",
+  "description": "A mobile-first carousel",
+  "start_url": "/",
+  "display": "standalone"
+}

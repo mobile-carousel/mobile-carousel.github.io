@@ -1,0 +1,102 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-swipeable-pages/iron-swipeable-pages.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+
+<dom-module id="mobile-carousel">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      iron-swipeable-pages {
+        height: 280px;
+        width: 100%;
+        max-width: 100%;
+        @apply(--layout-flex);
+      }
+
+      iron-swipeable-pages > * {
+        -webkit-user-select: none;  /* Chrome all / Safari all */
+        -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+        user-select: none;          /* Likely future */
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    </style>
+
+    <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
+      <div>
+        <iron-image style="width:100%; height:270px; background-color: #fff;" on-tap="tappedImage"
+                    sizing="contain" preload fade src="http://placehold.it/640x320"></iron-image>
+      </div>
+      <div>
+        <iron-image style="width:100%; height:270px; background-color: #fff;"
+                    sizing="contain" preload fade src="http://placehold.it/640x320"></iron-image>
+      </div>
+      <div>
+        <iron-image style="width:100%; height:270px; background-color: #fff;"
+                    sizing="contain" preload fade src="http://placehold.it/640x320"></iron-image>
+      </div>
+    </iron-swipeable-pages>
+
+
+
+    <div class="container">
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff;"
+                  sizing="contain" preload fade src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff;"
+                  sizing="contain" preload fade src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff;"
+                  sizing="contain" preload fade src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff;"
+                  sizing="contain" preload fade src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff;"
+                  sizing="contain" preload fade src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'mobile-carousel',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'mobile-carousel'
+        },
+        ironImgHeight: {
+          type: Number,
+          value: '120'
+        },
+        ironImgWidth: {
+          type: Number,
+          value: '100'
+        },
+        bannerImgHeight: {
+          type: Number,
+          value: '150'
+        },
+        bannerImgWidth: {
+          type: Number,
+          value: '200'
+        },
+        slideIndex: {
+          type: Number,
+          value: '0'
+        }
+      }
+
+    });
+  </script>
+</dom-module>
