@@ -1161,9 +1161,10 @@ delete this[t])},_configureProperties:function(e,t){for(var n in e){var r=e[n];i
         white-space: nowrap;
         background: #fafafa;
         -webkit-overflow-scrolling: touch;
+        margin-top: -30px;
       }
       .container iron-image {
-        margin: 10px 2px 2px 2px;
+        margin: 10px 4px 2px 4px;
         border: 1px solid rgba(0,0,0,0.1);
         cursor: pointer;
         border-radius: 2px;
@@ -1189,11 +1190,11 @@ delete this[t])},_configureProperties:function(e,t){for(var n in e){var r=e[n];i
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
         
-        <iron-image style="width:100%; height:320px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/save-on-tvs2.jpg"></iron-image>
+        <iron-image style="width:100%; height:320px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/save-on-tvs2.jpg"></iron-image>
       </div>
       <div>
         
-        <iron-image style="width:100%; height:320px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/save-on-laptops.jpg"></iron-image>
+        <iron-image style="width:100%; height:320px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/save-on-laptops.jpg"></iron-image>
       </div>
       <div>
         
@@ -1201,36 +1202,36 @@ delete this[t])},_configureProperties:function(e,t){for(var n in e){var r=e[n];i
       </div>
       <div>
         
-        <iron-image style="width:100%; height:320px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/save-on-tvs2.jpg"></iron-image>
+        <iron-image style="width:100%; height:320px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/save-on-tvs2.jpg"></iron-image>
       </div>
       <div>
         
-        <iron-image style="width:100%; height:320px; background-color: #fff" sizing="cover" preload="" fade="" src="../../../../../images/weekly-shop-now.jpg"></iron-image>
+        <iron-image style="width:100%; height:320px; background-color: #fff" on-tap="tappedImage" sizing="cover" preload="" fade="" src="../../../../../images/weekly-shop-now.jpg"></iron-image>
 
       </div>
     </iron-swipeable-pages>
 
-    <paper-radio-group selected="{{slideIndex}}">
-      <paper-radio-button name="0" noink=""></paper-radio-button>
-      <paper-radio-button name="1" noink=""></paper-radio-button>
-      <paper-radio-button name="2" noink=""></paper-radio-button>
-      <paper-radio-button name="3" noink=""></paper-radio-button>
-      <paper-radio-button name="4" noink=""></paper-radio-button>
-    </paper-radio-group>
+    
+      
+      
+      
+      
+      
+    
 
     <div class="container">
-      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice2.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice3.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/slice2.png"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/slice3.png"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png"></iron-image>
 
     </div>
 
   </template>
 
-  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},slideIndex:{type:Number,value:"0"}}});</script>
+  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},slideIndex:{type:Number,value:"0"}},tappedImage:function(){console.log("tapped image!")}});</script>
 </dom-module>
 </div>
     <mobile-carousel></mobile-carousel>
