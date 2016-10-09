@@ -1,4 +1,8 @@
 <html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-swipeable-pages/iron-swipeable-pages.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 
 </head><body><dom-module id="mobile-carousel">
   <template>
@@ -6,10 +10,72 @@
       :host {
         display: block;
       }
+      iron-swipeable-pages {
+        height: 200px;
+        width: 100%;
+        max-width: 100%;
+        @apply(--layout-flex);
+      }
+
+      iron-swipeable-pages > * {
+        -webkit-user-select: none;  /* Chrome all / Safari all */
+        -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+        user-select: none;          /* Likely future */
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+      }
+
+      paper-radio-group {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
+
+      .container {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
+      <div>
+        <iron-image style="width:100%; height:194px; background-color: #fff" on-tap="tappedImage" sizing="contain" preload="" fade="" src="http://placehold.it/640x320"></iron-image>
+      </div>
+      <div>
+        <iron-image style="width:100%; height:194px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/640x320"></iron-image>
+      </div>
+      <div>
+        <iron-image style="width:100%; height:194px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/640x320"></iron-image>
+      </div>
+      <div>
+        <iron-image style="width:100%; height:194px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/640x320"></iron-image>
+      </div>
+      <div>
+        <iron-image style="width:100%; height:194px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/640x320"></iron-image>
+      </div>
+    </iron-swipeable-pages>
+
+    <paper-radio-group selected="{{slideIndex}}">
+      <paper-radio-button name="0"></paper-radio-button>
+      <paper-radio-button name="1"></paper-radio-button>
+      <paper-radio-button name="2"></paper-radio-button>
+      <paper-radio-button name="3"></paper-radio-button>
+      <paper-radio-button name="4"></paper-radio-button>
+    </paper-radio-group>
+
+    <div class="container">
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+
+    </div>
+
   </template>
 
-  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"}}});</script>
+  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},ironImgHeight:{type:Number,value:"120"},ironImgWidth:{type:Number,value:"100"},bannerImgHeight:{type:Number,value:"150"},bannerImgWidth:{type:Number,value:"200"},slideIndex:{type:Number,value:"0"}}});</script>
 </dom-module>
 </body></html>
