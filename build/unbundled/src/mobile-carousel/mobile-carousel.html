@@ -37,6 +37,9 @@
         overflow-x: auto;
         white-space: nowrap;
       }
+      .container iron-image {
+
+      }
     </style>
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
@@ -66,16 +69,17 @@
     </paper-radio-group>
 
     <div class="container">
-      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
-      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
-      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
-      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
-      <iron-image style="width:{{ironImgHeight}}px; height:{{ironImgWidth}}px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/{{bannerImgWidth}}x{{bannerImgHeight}}"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/150x100"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/150x100"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/150x100"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/150x100"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/150x100"></iron-image>
+      <iron-image style="width:150px; height:100px; background-color: #fff" sizing="contain" preload="" fade="" src="http://placehold.it/150x100"></iron-image>
 
     </div>
 
   </template>
 
-  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},ironImgHeight:{type:Number,value:"120"},ironImgWidth:{type:Number,value:"100"},bannerImgHeight:{type:Number,value:"150"},bannerImgWidth:{type:Number,value:"200"},slideIndex:{type:Number,value:"0"}}});</script>
+  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},slideIndex:{type:Number,value:"0"}}});</script>
 </dom-module>
 </body></html>
