@@ -37,13 +37,16 @@
 
       .container {
         width: 100%;
-        overflow-x: auto;
+        overflow-x: scroll;
         white-space: nowrap;
         background: #fafafa;
+        -webkit-overflow-scrolling: touch;
       }
       .container iron-image {
         margin: 10px 2px 2px 2px;
         border: 1px solid rgba(0,0,0,0.1);
+        cursor: pointer;
+        border-radius: 2px;
       }
       paper-radio-group {
         margin-top: -72px;
