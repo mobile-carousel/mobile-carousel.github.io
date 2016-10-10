@@ -3,6 +3,9 @@
 <link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
 
 <dom-module id="mobile-carousel">
   <template>
@@ -12,11 +15,12 @@
       }
       * {
         -webkit-tap-highlight-color: transparent;
+        font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
+        font-weight: 500;
       }
       iron-swipeable-pages {
         height: 350px;
-        width: 100%;
-        max-width: 100%;
+        width: 100vw;
         @apply(--layout-flex);
       }
 
@@ -26,25 +30,25 @@
         -ms-user-select: none;      /* IE 10+ */
         user-select: none;          /* Likely future */
         cursor: pointer;
-        width: 100%;
+        width: 100vw;
         height: 100%;
       }
 
-      paper-radio-group {
+      paper-radio-group, p, .centered {
         @apply(--layout-horizontal);
         @apply(--layout-center-justified);
       }
 
       .container {
-        width: 100%;
         overflow-x: scroll;
         white-space: nowrap;
-        background: #fafafa;
         -webkit-overflow-scrolling: touch;
         margin-top: -30px;
+        padding-left: 8px;
+        padding-right: 8px;
       }
       .container iron-image {
-        margin: 10px 4px 2px 4px;
+        margin: 10px 2px 2px 2px;
         border: 1px solid rgba(0,0,0,0.1);
         cursor: pointer;
         border-radius: 2px;
@@ -58,12 +62,19 @@
         --paper-radio-button-unchecked-color: #003b64;
         --paper-radio-button-unchecked-color-ink: transparent;
       }
-      img {
-        height: 100%;
-        width: 100%;
-      }
       .carousel-container {
         height: 90%;
+      }
+      p {
+        @apply(--paper-font-subhead);
+        font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
+        font-weight: 500;
+      }
+      paper-button {
+        text-transform: none;
+      }
+      paper-button.primary {
+        color: #0071C0;
       }
     </style>
 
@@ -105,20 +116,26 @@
     <!--</paper-radio-group>-->
 
     <div class="container">
-      <iron-image style="width:150px; height:100px; background-color: #fff;" on-tap="tappedImage"
+      <iron-image style="width:110px; height:80px; background-color: #fff;" on-tap="tappedImage"
                   sizing="contain" preload fade src="../../images/slice1.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff;" on-tap="tappedImage"
-                  sizing="contain" preload fade src="../../images/slice2.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff;" on-tap="tappedImage"
+      <iron-image style="width:110px; height:80px; background-color: #fff;" on-tap="tappedImage"
                   sizing="contain" preload fade src="../../images/slice3.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff;" on-tap="tappedImage"
+      <iron-image style="width:110px; height:80px; background-color: #fff;" on-tap="tappedImage"
+                  sizing="contain" preload fade src="../../images/slice2.png"></iron-image>
+      <iron-image style="width:110px; height:80px; background-color: #fff;" on-tap="tappedImage"
                   sizing="contain" preload fade src="../../images/slice1.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff;" on-tap="tappedImage"
-                  sizing="contain" preload fade src="../../images/slice1.png"></iron-image>
-      <iron-image style="width:150px; height:100px; background-color: #fff;" on-tap="tappedImage"
-                  sizing="contain" preload fade src="../../images/slice1.png"></iron-image>
+      <iron-image style="width:110px; height:80px; background-color: #fff;" on-tap="tappedImage"
+                  sizing="contain" preload fade src="../../images/slice2.png"></iron-image>
+      <iron-image style="width:110px; height:80px; background-color: #fff;" on-tap="tappedImage"
+                  sizing="contain" preload fade src="../../images/slice3.png"></iron-image>
 
     </div>
+
+      <p>Are you enjoying the new Best Buy App?</p>
+      <div class="centered">
+        <paper-button class="primary" on-tap="sendFeedback">Yes, I am</paper-button>
+        <paper-button on-tap="sendFeedback">Not really</paper-button>
+      </div>
 
   </template>
 
@@ -139,6 +156,9 @@
       },
       tappedImage: function() {
         console.log('tapped image!');
+      },
+      sendFeedback: function() {
+        window.open('mailto:cbrownwa@bestbuycanada.ca?subject=Best%20Buy%20App%20Feedback');
       }
 
     });
