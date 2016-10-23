@@ -1505,6 +1505,16 @@ delete this[t])},_configureProperties:function(e,t){for(var n in e){var r=e[n];i
       .carousel-container {
         height: 90%;
       }
+      .carousel-container iron-image {
+        width:100%;
+        height:320px;
+        background-color: #ffffff;
+      }
+      .container iron-image {
+        width:110px;
+        height:80px;
+        background-color: #ffffff;
+      }
       p {
         @apply(--paper-font-subhead);
         font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
@@ -1524,35 +1534,37 @@ delete this[t])},_configureProperties:function(e,t){for(var n in e){var r=e[n];i
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image data-action="10382339" data-type="pdp" style="width:100%; height:320px; background-color: #fff" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../../../../images/save-on-tvs2.jpg"></iron-image>
+        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../../../../images/save-on-tvs2.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10381806" data-type="pdp" style="width:100%; height:320px; background-color: #fff" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../../../../images/save-on-laptops.jpg"></iron-image>
+        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../../../../images/save-on-laptops.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10460630" data-type="pdp" style="width:100%; height:320px; background-color: #fff" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../../../../images/dotd.jpg"></iron-image>
+        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../../../../images/dotd.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10460630" data-type="pdp" style="width:100%; height:320px; background-color: #fff" on-tap="tappedItem" sizing="cover" preload="" fade="" src="../../../../../images/weekly-shop-now.jpg"></iron-image>
+        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="cover" preload="" fade="" src="../../../../../images/weekly-shop-now.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
 
       </div>
     </iron-swipeable-pages>
 
     <div class="container">
-      <iron-image data-action="deals" data-type="search" style="width:110px; height:80px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="gifts" data-type="search" style="width:110px; height:80px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice3.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="outlet" data-type="search" style="width:110px; height:80px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice2.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="tv" data-type="search" style="width:110px; height:80px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="laptop" data-type="search" style="width:110px; height:80px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice2.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="vr" data-type="search" style="width:110px; height:80px; background-color: #fff" sizing="contain" preload="" fade="" src="../../../../../images/slice3.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-action="deals" data-type="search" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-action="gifts" data-type="search" sizing="contain" preload="" fade="" src="../../../../../images/slice3.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-action="outlet" data-type="search" sizing="contain" preload="" fade="" src="../../../../../images/slice2.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-action="tv" data-type="search" sizing="contain" preload="" fade="" src="../../../../../images/slice1.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-action="laptop" data-type="search" sizing="contain" preload="" fade="" src="../../../../../images/slice2.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-action="vr" data-type="search" sizing="contain" preload="" fade="" src="../../../../../images/slice3.png" on-tap="tappedItem"></iron-image>
     </div>
 
       <p>Are you enjoying the new Best Buy App?</p>
       <div class="centered">
-        <paper-button class="primary" data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-type="email" on-tap="tappedItem">
+        <paper-button class="primary" on-tap="tappedItem" data-type="email" data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net">
           Yes, I am
         </paper-button>
-        <paper-button>Not really</paper-button>
+        <paper-button on-tap="tappedItem" data-type="email" data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net?body=Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n">
+          Not really
+        </paper-button>
       </div>
 
   </template>
