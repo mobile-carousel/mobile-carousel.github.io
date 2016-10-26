@@ -127,12 +127,16 @@
 
       <p>Are you enjoying the new Best Buy App?</p>
       <div class="centered">
-        <paper-button class="primary" on-tap="tappedItem" data-type="email"
-                      data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net">
+        <paper-button class="primary" on-tap="tappedEmail"
+                      data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
+                      data-subject="Best Buy Canada App Feedback"
+                      data-body="Feedback">
           Yes, I am
         </paper-button>
-        <paper-button on-tap="tappedItem" data-type="email"
-                      data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net?body=Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n">
+        <paper-button on-tap="tappedEmail"
+                      data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
+                      data-subject="Best Buy Canada App Feedback"
+                      data-body="Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n"">
           Not really
         </paper-button>
       </div>
@@ -170,6 +174,23 @@
         }
         catch(err) {
           console.log('The native context does not exist yet:'+ appActionData + ' ' + appActionType);
+        }
+      },
+
+      tappedEmail: function(e) {
+        var emailRecipient = Polymer.dom(e).localTarget.getAttribute('data-recipient');
+        var emailSubject = Polymer.dom(e).localTarget.getAttribute('data-subject');
+        var emailBody = Polymer.dom(e).localTarget.getAttribute('data-body');
+
+        try {
+          webkit.messageHandlers.messageReciever.postMessage({
+            emailRecipient: emailRecipient,
+            emailSubject: emailSubject,
+            emailBody: emailBody
+          });
+        }
+        catch(err) {
+          console.log('The native context does not exist yet:'+ emailRecipient + ' ' + emailSubject + ' ' + emailBody);
         }
       }
 
