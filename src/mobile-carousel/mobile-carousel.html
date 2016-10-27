@@ -238,11 +238,8 @@
       },
 
       onQueryChange: function(newValue, oldValue) {
-<<<<<<< HEAD
-        let langQueryString = newValue.split("lang=")[1] ? newValue.split("lang=")[1].split("&")[0] : this.language;
-=======
-        var langQueryString = newValue.split("lang=")[1] ? newValue.split("lang=")[1].split("?")[0] : this.language;
->>>>>>> d866e83686aa781bb8d4be3b058aba82cba6f00e
+
+        var langQueryString = newValue.split("lang=")[1] ? newValue.split("lang=")[1].split("&")[0] : this.language;
 
         // Get lang query string of url
         if(langQueryString === 'en' || langQueryString === 'fr') {
