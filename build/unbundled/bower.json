@@ -3,7 +3,10 @@
   "description": "A mobile-first carousel",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "polymer": "Polymer/polymer#^1.4.0",
+    "app-localize-behavior": "PolymerElements/app-localize-behavior#^0.10.0",
+    "iron-location": "PolymerElements/iron-location#^0.8.9",
+    "promise-polyfill": "PolymerLabs/promise-polyfill#^1.0.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
