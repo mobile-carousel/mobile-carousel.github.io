@@ -127,15 +127,17 @@
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedEmail"
+                      data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
-                      data-subject="Best Buy Canada App Feedback"
-                      data-body="Feedback">
+                      data-subject="Best Buy Canada App Feedback - I like the app"
+                      data-action="Feedback">
           {{localize('yes')}}
         </paper-button>
         <paper-button on-tap="tappedEmail"
+                      data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
-                      data-subject="Best Buy Canada App Feedback"
-                      data-body="">
+                      data-subject="Best Buy Canada App Feedback - Issue report"
+                      data-action="Expected Result, Actual Result, Steps to Reproduce">
           {{localize('no')}}
         </paper-button>
       </div>
@@ -217,19 +219,21 @@
       },
 
       tappedEmail: function(e) {
-        var emailRecipient = Polymer.dom(e).localTarget.getAttribute('data-recipient');
-        var emailSubject = Polymer.dom(e).localTarget.getAttribute('data-subject');
-        var emailBody = Polymer.dom(e).localTarget.getAttribute('data-body');
+        var appEmailRecipient = Polymer.dom(e).localTarget.getAttribute('data-recipient');
+        var appEmailSubject = Polymer.dom(e).localTarget.getAttribute('data-subject');
+        var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
+        var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
 
         try {
           webkit.messageHandlers.messageReciever.postMessage({
-            emailRecipient: emailRecipient,
-            emailSubject: emailSubject,
-            emailBody: emailBody
+            actionType: appActionType,
+            actionData: appActionData,
+            emailRecipient: appEmailRecipient,
+            emailSubject: appEmailSubject
           });
         }
         catch(err) {
-          console.log('The native context does not exist yet:'+ emailRecipient + ' ' + emailSubject + ' ' + emailBody);
+          console.log('The native context does not exist yet:'+ appEmailRecipient + ' ' + appEmailSubject + ' ' + appActionData + ' ' + appActionType);
         }
       },
 
