@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 
 
 <dom-module id="mobile-carousel">
@@ -96,6 +97,9 @@
       }
     </style>
 
+    <iron-location query="{{query}}">
+    </iron-location>
+
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
         <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="contain" preload fade src="../../images/save-on-tvs2.jpg"
@@ -125,15 +129,15 @@
       <iron-image data-action="vr" data-type="search" sizing="contain" preload fade src="../../images/slice3.png" on-tap="tappedItem"></iron-image>
     </div>
 
-      <p>Are you enjoying the new Best Buy App?</p>
+      <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedItem" data-type="email"
                       data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net">
-          Yes, I am
+          {{localize('yes')}}
         </paper-button>
         <paper-button on-tap="tappedItem" data-type="email"
                       data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net?body=Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n">
-          Not really
+          {{localize('no')}}
         </paper-button>
       </div>
 
@@ -144,11 +148,15 @@
 
       is: 'mobile-carousel',
 
+      behaviors: [
+        Polymer.AppLocalizeBehavior
+      ],
+
+      observers: [
+        'onQueryChange(query)'
+      ],
+
       properties: {
-        prop1: {
-          type: String,
-          value: 'mobile-carousel'
-        },
         slideIndex: {
           type: Number,
           value: '0'
@@ -156,8 +164,32 @@
         appActionType: {
           type: String,
           value: 'pdp'
+        },
+        query: {
+          type: String
+        },
+        language: {
+          type: String,
+          value: 'en'
+        },
+        resources: {
+          value: function (){
+            return {
+                'en': {
+                  'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
+                  'yes': 'Yes, I am',
+                  'no': 'Not really'
+                },
+                'fr': {
+                  'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
+                  'yes': 'Oui, je suis satisfait',
+                  'no': 'Pas vraiment'
+                }
+            }
+          }
         }
       },
+
       tappedItem: function(e) {
         var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
@@ -171,8 +203,12 @@
         catch(err) {
           console.log('The native context does not exist yet:'+ appActionData + ' ' + appActionType);
         }
-      }
+      },
 
+      onQueryChange: function(newValue, oldValue) {
+        // Get lang query string of url
+        this.language = newValue.split("lang=")[1] || this.language;
+      }
     });
   </script>
 </dom-module>
