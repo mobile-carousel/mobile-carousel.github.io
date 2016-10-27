@@ -98,16 +98,16 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/save-on-tvs2.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
+        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/save-on-tvs2.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/save-on-laptops.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
+        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/save-on-laptops.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/dotd.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
+        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/dotd.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="cover" preload="" fade="" src="../../images/weekly-shop-now.jpg" style="width:100%; height:320px; background-color: #fff"></iron-image>
+        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="cover" preload="" fade="" src="../../images/weekly-shop-now.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
 
       </div>
     </iron-swipeable-pages>
@@ -123,16 +123,16 @@
 
       <p>Are you enjoying the new Best Buy App?</p>
       <div class="centered">
-        <paper-button class="primary" on-tap="tappedItem" data-type="email" data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net">
+        <paper-button class="primary" on-tap="tappedEmail" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback" data-body="Feedback">
           Yes, I am
         </paper-button>
-        <paper-button on-tap="tappedItem" data-type="email" data-action="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net?body=Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n">
+        <paper-button on-tap="tappedEmail" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback" data-body="Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n" "="">
           Not really
         </paper-button>
       </div>
 
   </template>
 
-  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"}},tappedItem:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-action"),a=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:a,actionData:t})}catch(e){console.log("The native context does not exist yet:"+t+" "+a)}}});</script>
+  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"}},tappedItem:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-action"),a=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:a,actionData:t})}catch(e){console.log("The native context does not exist yet:"+t+" "+a)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),a=Polymer.dom(e).localTarget.getAttribute("data-subject"),o=Polymer.dom(e).localTarget.getAttribute("data-body");try{webkit.messageHandlers.messageReciever.postMessage({emailRecipient:t,emailSubject:a,emailBody:o})}catch(e){console.log("The native context does not exist yet:"+t+" "+a+" "+o)}}});</script>
 </dom-module>
 </body></html>
