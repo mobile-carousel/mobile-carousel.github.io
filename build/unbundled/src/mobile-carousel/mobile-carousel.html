@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 
 
 </head><body><dom-module id="mobile-carousel">
@@ -96,43 +97,40 @@
       }
     </style>
 
+    <iron-location query="{{query}}">
+    </iron-location>
+
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/save-on-tvs2.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
+        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/save-on-laptops.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
+        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img2')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="../../images/dotd.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
-      </div>
-      <div>
-        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="cover" preload="" fade="" src="../../images/weekly-shop-now.jpg" style="width:100%; height:320px; background-color: #fff;"></iron-image>
-
+        <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img3')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
     </iron-swipeable-pages>
 
     <div class="container">
-      <iron-image data-action="deals" data-type="search" sizing="contain" preload="" fade="" src="../../images/slice1.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="gifts" data-type="search" sizing="contain" preload="" fade="" src="../../images/slice3.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="outlet" data-type="search" sizing="contain" preload="" fade="" src="../../images/slice2.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="tv" data-type="search" sizing="contain" preload="" fade="" src="../../images/slice1.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="laptop" data-type="search" sizing="contain" preload="" fade="" src="../../images/slice2.png" on-tap="tappedItem"></iron-image>
-      <iron-image data-action="vr" data-type="search" sizing="contain" preload="" fade="" src="../../images/slice3.png" on-tap="tappedItem"></iron-image>
+      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice1')}}" on-tap="tappedItem" data-action="deals"></iron-image>
+      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice2')}}" on-tap="tappedItem" data-action="gifts"></iron-image>
+      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice3')}}" on-tap="tappedItem" data-action="outlet"></iron-image>
+      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice2')}}" on-tap="tappedItem" data-action="tv"></iron-image>
     </div>
 
-      <p>Are you enjoying the new Best Buy App?</p>
+      <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedEmail" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback" data-body="Feedback">
-          Yes, I am
+          {{localize('yes')}}
         </paper-button>
-        <paper-button on-tap="tappedEmail" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback" data-body="Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n" "="">
-          Not really
+        <paper-button on-tap="tappedEmail" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback" data-body="">
+          {{localize('no')}}
         </paper-button>
       </div>
 
   </template>
 
-  <script>Polymer({is:"mobile-carousel",properties:{prop1:{type:String,value:"mobile-carousel"},slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"}},tappedItem:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-action"),a=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:a,actionData:t})}catch(e){console.log("The native context does not exist yet:"+t+" "+a)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),a=Polymer.dom(e).localTarget.getAttribute("data-subject"),o=Polymer.dom(e).localTarget.getAttribute("data-body");try{webkit.messageHandlers.messageReciever.postMessage({emailRecipient:t,emailSubject:a,emailBody:o})}catch(e){console.log("The native context does not exist yet:"+t+" "+a+" "+o)}}});</script>
+  <script>Polymer({is:"mobile-carousel",behaviors:[Polymer.AppLocalizeBehavior],observers:["onQueryChange(query)"],properties:{slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"},query:{type:String},language:{type:String,value:"en"},resources:{value:function(){return{en:{feedbackQuestions:"Are you enjoying the new Best Buy App?",yes:"Yes, I am",no:"Not really",img1:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/twodaysale_en_mobile.jpg",img2:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/laptops_en_mobile.jpg",img3:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_fr_mobile.jpg",slice1:"../../images/slice1-en.png",slice2:"../../images/slice2-en.png",slice3:"../../images/slice3-en.png"},fr:{feedbackQuestions:"Appreciez-vous la nouvelle application Best Buy?",yes:"Oui, je suis satisfait",no:"Pas vraiment",img1:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/twodaysale_fr_mobile.jpg",img2:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/laptops_fr_mobile.jpg",img3:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_fr_mobile.jpg",slice1:"../../images/slice1-fr.png",slice2:"../../images/slice2-fr.png",slice3:"../../images/slice3-fr.png"}}}}},tappedItem:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-action"),a=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:a,actionData:t})}catch(e){console.log("The native context does not exist yet:"+t+" "+a)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),a=Polymer.dom(e).localTarget.getAttribute("data-subject"),s=Polymer.dom(e).localTarget.getAttribute("data-body");try{webkit.messageHandlers.messageReciever.postMessage({emailRecipient:t,emailSubject:a,emailBody:s})}catch(e){console.log("The native context does not exist yet:"+t+" "+a+" "+s)}},onQueryChange:function(e,t){var a=e.split("lang=")[1]?e.split("lang=")[1].split("?")[0]:this.language;"en"!==a&&"fr"!==a||(this.language=a)}});</script>
 </dom-module>
 </body></html>
