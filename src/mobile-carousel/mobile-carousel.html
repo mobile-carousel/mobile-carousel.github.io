@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 
 
 <dom-module id="mobile-carousel">
@@ -96,6 +97,9 @@
       }
     </style>
 
+    <iron-location query="{{query}}">
+    </iron-location>
+
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
         <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="contain" preload fade src="../../images/save-on-tvs2.jpg"
@@ -125,19 +129,19 @@
       <iron-image data-action="vr" data-type="search" sizing="contain" preload fade src="../../images/slice3.png" on-tap="tappedItem"></iron-image>
     </div>
 
-      <p>Are you enjoying the new Best Buy App?</p>
+      <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedEmail"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback"
                       data-body="Feedback">
-          Yes, I am
+          {{localize('yes')}}
         </paper-button>
         <paper-button on-tap="tappedEmail"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback"
-                      data-body="Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n"">
-          Not really
+                      data-body="Hi%20there,\n\nI%20noticed%20something%20that%20seems%20like%20an%20issue:\n\nSteps%20to%20reproduce:\n1.%20Launch%20the%20app2.%20\n\nExpected%20Result:\n\nActual%20Result:\n">
+          {{localize('no')}}
         </paper-button>
       </div>
 
@@ -148,11 +152,15 @@
 
       is: 'mobile-carousel',
 
+      behaviors: [
+        Polymer.AppLocalizeBehavior
+      ],
+
+      observers: [
+        'onQueryChange(query)'
+      ],
+
       properties: {
-        prop1: {
-          type: String,
-          value: 'mobile-carousel'
-        },
         slideIndex: {
           type: Number,
           value: '0'
@@ -160,8 +168,32 @@
         appActionType: {
           type: String,
           value: 'pdp'
+        },
+        query: {
+          type: String
+        },
+        language: {
+          type: String,
+          value: 'en'
+        },
+        resources: {
+          value: function (){
+            return {
+                'en': {
+                  'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
+                  'yes': 'Yes, I am',
+                  'no': 'Not really'
+                },
+                'fr': {
+                  'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
+                  'yes': 'Oui, je suis satisfait',
+                  'no': 'Pas vraiment'
+                }
+            }
+          }
         }
       },
+
       tappedItem: function(e) {
         var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
@@ -192,8 +224,16 @@
         catch(err) {
           console.log('The native context does not exist yet:'+ emailRecipient + ' ' + emailSubject + ' ' + emailBody);
         }
-      }
+      },
 
+      onQueryChange: function(newValue, oldValue) {
+        let langQueryString = newValue.split("lang=")[1] ? newValue.split("lang=")[1].split("?")[0] : this.language;
+
+        // Get lang query string of url
+        if(langQueryString === 'en' || langQueryString === 'fr') {
+          this.language = langQueryString;
+        }
+      }
     });
   </script>
 </dom-module>
