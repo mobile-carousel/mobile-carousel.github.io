@@ -102,10 +102,10 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
+        <iron-image data-action="deals" data-type="search" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img2')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
+        <iron-image data-action="laptops" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img2')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
       </div>
       <div>
         <iron-image data-action="10460630" data-type="pdp" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img3')}}" style="width:100%; height:320px; background-color: #fff"></iron-image>
@@ -123,10 +123,10 @@
 
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
-        <paper-button class="primary" on-tap="tappedEmail" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - I like the app" data-action="Feedback">
+        <paper-button class="primary" on-tap="tappedEmail" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - I like it!" data-action="">
           {{localize('yes')}}
         </paper-button>
-        <paper-button on-tap="tappedEmail" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - Issue report" data-action="Expected Result, Actual Result, Steps to Reproduce">
+        <paper-button on-tap="tappedEmail" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - Reporting a problem" data-action="Description:\n\nExpected Result:\n\nActual Result:\n\nSteps to Reproduce:">
           {{localize('no')}}
         </paper-button>
       </div>
