@@ -205,6 +205,13 @@
         }
       },
 
+      ready: function() {
+        setTimeout(
+                function() {
+                  document.querySelector('iron-swipeable-pages').selectNext();
+                }, 4000);
+      },
+
       tappedItem: function(e) {
         var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
