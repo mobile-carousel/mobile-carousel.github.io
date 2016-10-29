@@ -13,6 +13,7 @@
     <style>
       :host {
         display: block;
+        margin-top: -2px;
       }
       * {
         -webkit-tap-highlight-color: transparent;
@@ -48,7 +49,7 @@
         overflow-x: scroll;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
-        margin-top: -30px;
+        margin-top: -18px;
         padding-left: 8px;
         padding-right: 8px;
       }
@@ -57,6 +58,9 @@
         border: 1px solid rgba(0,0,0,0.1);
         cursor: pointer;
         border-radius: 2px;
+        width:110px;
+        height:80px;
+        background-color: #ffffff;
       }
       paper-radio-group {
         margin-top: -72px;
@@ -71,14 +75,11 @@
         height: 90%;
       }
       .carousel-container iron-image {
-        width:100%;
-        height:270px;
+        /*width:100%;*/
+        /*height:270px;*/
         background-color: #ffffff;
-      }
-      .container iron-image {
-        width:110px;
-        height:80px;
-        background-color: #ffffff;
+        width: 102%;
+        margin-left: -3px;
       }
       p {
         @apply(--paper-font-subhead);
@@ -102,13 +103,13 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image data-action="tvs" data-type="search" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:100%; height:270px; background-color: #fff"></iron-image>
+        <iron-image data-action="tvs" data-type="search" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:102%; height:280px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="baby seats" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img2')}}" style="width:100%; height:270px; background-color: #fff"></iron-image>
+        <iron-image data-action="baby seats" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img2')}}" style="width:102%; height:280px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image data-action="deals" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img3')}}" style="width:100%; height:270px; background-color: #fff"></iron-image>
+        <iron-image data-action="deals" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img3')}}" style="width:102%; height:280px; background-color: #fff"></iron-image>
       </div>
     </iron-swipeable-pages>
 
