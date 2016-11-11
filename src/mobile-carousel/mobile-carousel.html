@@ -99,6 +99,7 @@
       }
       .hidden {
         opacity: 0;
+        transition: 1s all ease-in-out;
       }
     </style>
 
@@ -132,7 +133,7 @@
       <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice5')}}" on-tap="tappedItem" data-action=""></iron-image>
     </div>
 
-    <div hidden id="feedbackButtons">
+    <div class="hidden" id="feedbackButtons">
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedEmail"
@@ -223,12 +224,15 @@
         setTimeout(
                 function() {
                   document.querySelector('iron-swipeable-pages').selectNext();
-                }, 4000);
+                }, 3000);
         setTimeout(
                 function() {
                   document.querySelector('iron-swipeable-pages').selectNext();
-                  document.querySelector('#feedbackButtons').hidden = false;
-                }, 8000);
+                }, 6000);
+        setTimeout(
+                function() {
+                  document.querySelector('#feedbackButtons').style.opacity = 1;
+                }, 7500);
 
       },
 
