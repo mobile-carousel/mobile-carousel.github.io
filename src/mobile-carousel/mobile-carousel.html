@@ -108,29 +108,29 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image data-action="tvs" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img1')}}"
+        <iron-image alt="tvs" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img1')}}"
                     style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image data-action="booster seat" data-type="search" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img2')}}"
+        <iron-image alt="booster seat" data-type="search" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img2')}}"
                     style="width:98%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image data-action="laptops" data-type="search" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img3')}}"
+        <iron-image alt="laptops" data-type="search" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img3')}}"
                     style="width:98%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image data-action="deals" data-type="search"  on-tap="tappedItem" sizing="contain" preload fade src="{{localize('dotd')}}"
+        <iron-image alt="deals" data-type="search"  on-tap="tappedItem" sizing="contain" preload fade src="{{localize('dotd')}}"
                     style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
     </iron-swipeable-pages>
 
     <div class="container">
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice1')}}" on-tap="tappedItem" data-action="deals"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice2')}}" on-tap="tappedItem" data-action="gifts"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice3')}}" on-tap="tappedItem" data-action="outlet"></iron-image>
-      <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice4')}}" on-tap="tappedItem" data-action="{{localize('flyer')}}"></iron-image>
-      <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice5')}}" on-tap="tappedItem" data-action="{{localize('blog'}}"></iron-image>
+      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice1')}}" on-tap="tappedItem" alt="deals"></iron-image>
+      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice2')}}" on-tap="tappedItem" alt="gifts"></iron-image>
+      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice3')}}" on-tap="tappedItem" alt="outlet"></iron-image>
+      <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice4')}}" on-tap="tappedItem" alt="{{localize('flyer')}}"></iron-image>
+      <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice5')}}" on-tap="tappedItem" alt="{{localize('blog')}}"></iron-image>
     </div>
 
     <div class="hidden" id="feedbackButtons">
@@ -140,14 +140,14 @@
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback - I like it!"
-                      data-action="Feedback">
+                      alt="Feedback">
           {{localize('yes')}}
         </paper-button>
         <paper-button on-tap="tappedEmail"
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback - Reporting a problem"
-                      data-action="Description:\n\n Expected Result:\n\n Actual Result:\n\n Steps to Reproduce:">
+                      alt="Description:\n\n Expected Result:\n\n Actual Result:\n\n Steps to Reproduce:">
           {{localize('no')}}
         </paper-button>
       </div>
@@ -216,7 +216,7 @@
                   'slice3': '../../images/slice3-fr.png',
                   'slice4': '../../images/slice4-fr.png',
                   'slice5': '../../images/slice5-fr.png',
-                  'flyer': 'http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2',
+                  'flyer': 'http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2',
                   'blog': 'http://blogue.bestbuy.ca/'
                 }
             }
@@ -241,7 +241,7 @@
       },
 
       tappedItem: function(e) {
-        var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
+        var appActionData = Polymer.dom(e).localTarget.alt;
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
 
         try {
@@ -258,7 +258,7 @@
       tappedEmail: function(e) {
         var appEmailRecipient = Polymer.dom(e).localTarget.getAttribute('data-recipient');
         var appEmailSubject = Polymer.dom(e).localTarget.getAttribute('data-subject');
-        var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
+        var appActionData = Polymer.dom(e).localTarget.alt;
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
 
         try {
