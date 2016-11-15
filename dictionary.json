@@ -1,6 +1,7 @@
 {
   "en": {
     "cancel": "Cancel",
+    "tap-to-refresh": "Tap to Refresh",
     "tabs-home": "Home",
     "tabs-products": "Products",
     "tabs-stores": "Stores",
@@ -60,6 +61,7 @@
   },
   "fr": {
     "cancel": "Cnnuler",
+    "tap-to-refresh": "Toucher pour rafraichir",
     "tabs-home": "Accueil",
     "tabs-products": "Produits",
     "tabs-stores": "Magasins",
