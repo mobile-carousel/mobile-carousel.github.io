@@ -136,14 +136,14 @@
     <div class="hidden" id="feedbackButtons">
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
-        <paper-button class="primary" on-tap="tappedEmail"
+        <paper-button class="primary" on-tap="tappedEmail" id="feedbackYes" disabled
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback - I like it!"
                       alt="Feedback">
           {{localize('yes')}}
         </paper-button>
-        <paper-button on-tap="tappedEmail"
+        <paper-button on-tap="tappedEmail" id="feedbackNo" disabled
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback - Reporting a problem"
@@ -235,6 +235,8 @@
                 }, 6000);
         setTimeout(
                 function() {
+                  document.querySelector('#feedbackYes').disabled = false;
+                  document.querySelector('#feedbackNo').disabled= false;
                   document.querySelector('#feedbackButtons').style.opacity = 1;
                 }, 16000);
 
