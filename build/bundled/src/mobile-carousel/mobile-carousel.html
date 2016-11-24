@@ -18,6 +18,7 @@
       }
       * {
         -webkit-tap-highlight-color: transparent;
+        text-align: center;
         font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
         font-weight: 500;
         -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -108,23 +109,23 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image alt="tv" data-type="search" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:100%; height:280px; background-color: #fff"></iron-image>
+        <iron-image alt="{{localize('flyer')}}" data-type="web" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img1')}}" style="width:100%; height:280px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image alt="booster seat" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img2')}}" style="width:98%; height:280px; background-color: #fff"></iron-image>
+        <iron-image alt="{{localize('flyer')}}" data-type="web" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img2')}}" style="width:98%; height:280px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image alt="laptops" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('img3')}}" style="width:98%; height:280px; background-color: #fff"></iron-image>
+        <iron-image alt="laptop" data-type="search" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('img3')}}" style="width:98%; height:280px; background-color: #fff"></iron-image>
       </div>
       <div>
-        <iron-image alt="deals" data-type="search" on-tap="tappedItem" sizing="contain" preload="" fade="" src="{{localize('dotd')}}" style="width:100%; height:280px; background-color: #fff"></iron-image>
+        <iron-image alt="baby" data-type="search" on-tap="tappedItem" sizing="cover" preload="" fade="" src="{{localize('dotd')}}" style="width:100%; height:280px; background-color: #fff"></iron-image>
       </div>
     </iron-swipeable-pages>
 
     <div class="container">
       <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice1')}}" on-tap="tappedItem" alt="deals"></iron-image>
-      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice2')}}" on-tap="tappedItem" alt="gifts"></iron-image>
-      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice3')}}" on-tap="tappedItem" alt="outlet"></iron-image>
+      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice2')}}" on-tap="tappedItem" alt="holiday"></iron-image>
+      <iron-image data-type="search" sizing="contain" preload="" fade="" src="{{localize('slice3')}}" on-tap="tappedItem" alt="clearance"></iron-image>
       <iron-image data-type="web" sizing="contain" preload="" fade="" src="{{localize('slice4')}}" on-tap="tappedItem" alt="{{localize('flyer')}}"></iron-image>
       <iron-image data-type="web" sizing="contain" preload="" fade="" src="{{localize('slice5')}}" on-tap="tappedItem" alt="{{localize('blog')}}"></iron-image>
     </div>
@@ -135,7 +136,7 @@
         <paper-button class="primary" on-tap="tappedEmail" id="feedbackYes" disabled="" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - I like it!" alt="Feedback">
           {{localize('yes')}}
         </paper-button>
-        <paper-button on-tap="tappedEmail" id="feedbackNo" disabled="" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - Reporting a problem" alt="Description:\n\n Expected Result:\n\n Actual Result:\n\n Steps to Reproduce:">
+        <paper-button on-tap="tappedEmail" id="feedbackNo" disabled="" data-type="email" data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net" data-subject="Best Buy Canada App Feedback - Reporting a problem" alt="Description:">
           {{localize('no')}}
         </paper-button>
       </div>
@@ -143,6 +144,6 @@
 
   </template>
 
-  <script>Polymer({is:"mobile-carousel",behaviors:[Polymer.AppLocalizeBehavior],observers:["onQueryChange(query)"],properties:{slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"},query:{type:String},language:{type:String,value:"en"},resources:{value:function(){return{en:{feedbackQuestions:"Are you enjoying the new Best Buy App?",yes:"Yes, I am",no:"Not really",img1:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/homedeals_en_mobile.jpg",img2:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/babycarseat_en_mobile.jpg",img3:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/laptop_en_mobile.jpg",dotd:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_en_mobile.jpg",slice1:"../../images/slice1-en.png",slice2:"../../images/slice2-en.png",slice3:"../../images/slice3-en.png",slice4:"../../images/slice4-en.png",slice5:"../../images/slice5-en.png",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2",blog:"http://blog.bestbuy.ca/"},fr:{feedbackQuestions:"Appreciez-vous la nouvelle application Best Buy?",yes:"Oui, je suis satisfait",no:"Pas vraiment",img1:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/homedeals_fr_mobile.jpg",img2:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/babycarseat_fr_mobile.jpg",img3:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/laptop_fr_mobile.jpg",dotd:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_fr_mobile.jpg",slice1:"../../images/slice1-fr.png",slice2:"../../images/slice2-fr.png",slice3:"../../images/slice3-fr.png",slice4:"../../images/slice4-fr.png",slice5:"../../images/slice5-fr.png",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2",blog:"http://blogue.bestbuy.ca/"}}}}},ready:function(){setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},3e3),setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},6e3),setTimeout(function(){document.querySelector("#feedbackYes").disabled=!1,document.querySelector("#feedbackNo").disabled=!1,document.querySelector("#feedbackButtons").style.opacity=1},16e3)},tappedItem:function(e){var t=Polymer.dom(e).localTarget.alt,s=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:s,actionData:t})}catch(e){console.log("The native context does not exist yet:"+t+" "+s)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),s=Polymer.dom(e).localTarget.getAttribute("data-subject"),a=Polymer.dom(e).localTarget.alt,i=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:i,actionData:a,emailRecipient:t,emailSubject:s})}catch(e){console.log("The native context does not exist yet:"+t+" "+s+" "+a+" "+i)}},onQueryChange:function(e,t){var s=e.split("lang=")[1]?e.split("lang=")[1].split("&")[0]:this.language;"en"!==s&&"fr"!==s||(this.language=s)}});</script>
+  <script>Polymer({is:"mobile-carousel",behaviors:[Polymer.AppLocalizeBehavior],observers:["onQueryChange(query)"],properties:{slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"},query:{type:String},language:{type:String,value:"en"},resources:{value:function(){return{en:{feedbackQuestions:"Are you enjoying the new Best Buy App?",yes:"Yes, I am",no:"Not really",img1:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/bf-flyer-en_mobile.jpg",img2:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-en_mobile.jpg",img3:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/laptop_en_mobile.jpg",dotd:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/baby_en_mobile.jpg",slice1:"../../images/slice1-en.png",slice2:"../../images/slice2-en.png",slice3:"../../images/slice3-en.png",slice4:"../../images/slice4-en.png",slice5:"../../images/slice5-en.png",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2",blog:"http://blog.bestbuy.ca/"},fr:{feedbackQuestions:"Appreciez-vous la nouvelle application Best Buy?",yes:"Oui, je suis satisfait",no:"Pas vraiment",img1:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/bf-flyer-fr_mobile.jpg",img2:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-fr_mobile.jpg",img3:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/laptop_fr_mobile.jpg",dotd:"https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/baby_fr_mobile.jpg",slice1:"../../images/slice1-fr.png",slice2:"../../images/slice2-fr.png",slice3:"../../images/slice3-fr.png",slice4:"../../images/slice4-fr.png",slice5:"../../images/slice5-fr.png",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2",blog:"http://blogue.bestbuy.ca/"}}}}},ready:function(){setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},3e3),setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},6e3),setTimeout(function(){document.querySelector("#feedbackYes").disabled=!1,document.querySelector("#feedbackNo").disabled=!1,document.querySelector("#feedbackButtons").style.opacity=1},16e3)},tappedItem:function(e){var t=Polymer.dom(e).localTarget.alt,s=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:s,actionData:t})}catch(e){console.log("The native context does not exist yet:"+t+" "+s)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),s=Polymer.dom(e).localTarget.getAttribute("data-subject"),a=Polymer.dom(e).localTarget.alt,i=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:i,actionData:a,emailRecipient:t,emailSubject:s})}catch(e){console.log("The native context does not exist yet:"+t+" "+s+" "+a+" "+i)}},onQueryChange:function(e,t){var s=e.split("lang=")[1]?e.split("lang=")[1].split("&")[0]:this.language;"en"!==s&&"fr"!==s||(this.language=s)}});</script>
 </dom-module>
 </body></html>

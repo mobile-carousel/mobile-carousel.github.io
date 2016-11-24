@@ -18,6 +18,7 @@
       }
       * {
         -webkit-tap-highlight-color: transparent;
+        text-align: center;
         font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
         font-weight: 500;
         -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -108,27 +109,27 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div class="carousel-container">
-        <iron-image alt="tv" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img1')}}"
+        <iron-image alt="{{localize('flyer')}}" data-type="web" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img1')}}"
                     style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image alt="booster seat" data-type="search" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img2')}}"
+        <iron-image alt="{{localize('flyer')}}" data-type="web" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img2')}}"
                     style="width:98%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image alt="laptops" data-type="search" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img3')}}"
+        <iron-image alt="laptop" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img3')}}"
                     style="width:98%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image alt="deals" data-type="search"  on-tap="tappedItem" sizing="contain" preload fade src="{{localize('dotd')}}"
+        <iron-image alt="baby" data-type="search"  on-tap="tappedItem" sizing="cover" preload fade src="{{localize('dotd')}}"
                     style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
     </iron-swipeable-pages>
 
     <div class="container">
       <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice1')}}" on-tap="tappedItem" alt="deals"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice2')}}" on-tap="tappedItem" alt="gifts"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice3')}}" on-tap="tappedItem" alt="outlet"></iron-image>
+      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice2')}}" on-tap="tappedItem" alt="holiday"></iron-image>
+      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice3')}}" on-tap="tappedItem" alt="clearance"></iron-image>
       <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice4')}}" on-tap="tappedItem" alt="{{localize('flyer')}}"></iron-image>
       <iron-image  data-type="web" sizing="contain" preload fade src="{{localize('slice5')}}" on-tap="tappedItem" alt="{{localize('blog')}}"></iron-image>
     </div>
@@ -147,7 +148,7 @@
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
                       data-subject="Best Buy Canada App Feedback - Reporting a problem"
-                      alt="Description:\n\n Expected Result:\n\n Actual Result:\n\n Steps to Reproduce:">
+                      alt="Description:">
           {{localize('no')}}
         </paper-button>
       </div>
@@ -191,10 +192,10 @@
                   'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
                   'yes': 'Yes, I am',
                   'no': 'Not really',
-                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/homedeals_en_mobile.jpg',
-                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/babycarseat_en_mobile.jpg',
-                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/laptop_en_mobile.jpg',
-                  'dotd': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_en_mobile.jpg',
+                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/bf-flyer-en_mobile.jpg',
+                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-en_mobile.jpg',
+                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/laptop_en_mobile.jpg',
+                  'dotd': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/baby_en_mobile.jpg',
                   'slice1': '../../images/slice1-en.png',
                   'slice2': '../../images/slice2-en.png',
                   'slice3': '../../images/slice3-en.png',
@@ -207,10 +208,10 @@
                   'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
                   'yes': 'Oui, je suis satisfait',
                   'no': 'Pas vraiment',
-                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/homedeals_fr_mobile.jpg',
-                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/babycarseat_fr_mobile.jpg',
-                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-28/laptop_fr_mobile.jpg',
-                  'dotd': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_fr_mobile.jpg',
+                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/bf-flyer-fr_mobile.jpg',
+                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-fr_mobile.jpg',
+                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/laptop_fr_mobile.jpg',
+                  'dotd': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/baby_fr_mobile.jpg',
                   'slice1': '../../images/slice1-fr.png',
                   'slice2': '../../images/slice2-fr.png',
                   'slice3': '../../images/slice3-fr.png',
