@@ -109,19 +109,28 @@
 
     <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
       <div>
-        <iron-image alt="4k tv" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img1')}}" style="width:100%; height:280px; background-color: #fff;"></iron-image>
+        <iron-image src="{{localize('img0src')}}"
+                    data-type="web"
+                    alt="{{localize('img0alt')}}"
+                    on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image alt="{{localize('gifts')}}" data-type="web" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img2')}}" style="width:98%; height:280px; background-color: #fff;"></iron-image>
+        <iron-image src="{{localize('img1src')}}"
+                    data-type="search"
+                    alt="{{localize('img1alt')}}"
+                    on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
       <div>
-        <iron-image alt="laptop" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img3')}}" style="width:98%; height:280px; background-color: #fff;"></iron-image>
+        <iron-image src="{{localize('img2src')}}"
+                    data-type="web"
+                    alt="{{localize('img2alt')}}"
+                    on-tap="tappedItem" sizing="cover" preload fade style="width:98%; height:280px; background-color: #fff;"></iron-image>
       </div>
-      <!--<div>-->
-        <!--<iron-image alt="10502437 10441000 10540951 10440995 10540971 10540971 10227507 10480681 10538073 10328032 10487328 10319244" data-type="search" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img4')}}" style="width:98%; height:280px; background-color: #fff;"></iron-image>-->
-      <!--</div>-->
       <div>
-        <iron-image alt="baby" data-type="search"  on-tap="tappedItem" sizing="cover" preload fade src="{{localize('dotd')}}" style="width:100%; height:280px; background-color: #fff;"></iron-image>
+        <iron-image src="{{localize('dotdSrc')}}"
+                    data-type="search"
+                    alt="{{localize('dotdAlt')}}"
+                    on-tap="tappedItem" sizing="cover" preload fade style="width:100%; height:280px; background-color: #fff;"></iron-image>
       </div>
     </iron-swipeable-pages>
 
@@ -191,11 +200,16 @@
                   'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
                   'yes': 'Yes, I am',
                   'no': 'Not really',
-                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_en_mobile.jpg',
-                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-en_mobile.jpg',
-                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/laptop_en_mobile.jpg',
-                  'img4': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/games_en_mobile.jpg',
-                  'dotd': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/baby_en_mobile.jpg',
+                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-en_mobile.jpg',
+                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/laptops_en_mobile.jpg',
+                  'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_en_mobile.jpg',
+                  'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
+                  'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
+                  'img0alt': 'http://blog.bestbuy.ca/category/cool-gifts',
+                  'img1alt': 'laptop',
+                  'img2alt': '4k tv',
+                  'img3alt': '10371746',
+                  'dotdAlt': '10371746',
                   'slice1': '../../images/slice1-en.png',
                   'slice2': '../../images/slice2-en.png',
                   'slice3': '../../images/slice3-en.png',
@@ -209,11 +223,16 @@
                   'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
                   'yes': 'Oui, je suis satisfait',
                   'no': 'Pas vraiment',
-                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_fr_mobile.jpg',
-                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-fr_mobile.jpg',
-                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/laptop_fr_mobile.jpg',
-                  'img4': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/games_fr_mobile.jpg',
-                  'dotd': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-18/baby_fr_mobile.jpg',
+                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-fr_mobile.jpg',
+                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/laptops_fr_mobile.jpg',
+                  'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_fr_mobile.jpg',
+                  'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
+                  'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
+                  'img0alt': 'http://blog.bestbuy.ca/category/cool-gifts',
+                  'img1alt': 'laptop',
+                  'img2alt': '4k tv',
+                  'img3alt': '10371746',
+                  'dotdAlt': '10371746',
                   'slice1': '../../images/slice1-fr.png',
                   'slice2': '../../images/slice2-fr.png',
                   'slice3': '../../images/slice3-fr.png',
