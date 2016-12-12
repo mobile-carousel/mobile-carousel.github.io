@@ -107,31 +107,44 @@
     <iron-location query="{{query}}">
     </iron-location>
 
-    <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
-      <div>
-        <iron-image src="{{localize('img0src')}}"
-                    data-type="web"
-                    alt="{{localize('img0alt')}}"
-                    on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
-      </div>
-      <div>
-        <iron-image src="{{localize('img1src')}}"
-                    data-type="search"
-                    alt="{{localize('img1alt')}}"
-                    on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
-      </div>
-      <div>
-        <iron-image src="{{localize('img2src')}}"
-                    data-type="web"
-                    alt="{{localize('img2alt')}}"
-                    on-tap="tappedItem" sizing="cover" preload fade style="width:98%; height:280px; background-color: #fff;"></iron-image>
-      </div>
-      <div>
-        <iron-image src="{{localize('dotdSrc')}}"
-                    data-type="search"
-                    alt="{{localize('dotdAlt')}}"
-                    on-tap="tappedItem" sizing="cover" preload fade style="width:100%; height:280px; background-color: #fff;"></iron-image>
-      </div>
+    <!--<iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('img0src')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('img0alt')}}"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('img1src')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('img1alt')}}"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('img2src')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="4k tv"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade style="width:98%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('dotdSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('dotdAlt')}}"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade style="width:100%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+    <!--</iron-swipeable-pages>-->
+
+    <iron-swipeable-pages selected="{{slideIndex}}">
+      <template is="dom-repeat" items="[[ajaxResponse.data]]">
+
+        <div>
+          <iron-image src="[[item]]"
+                      data-type="search"
+                      alt="[[item]]"
+                      on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
+        </div>
+
+      </template>
     </iron-swipeable-pages>
 
     <div class="container">
@@ -146,7 +159,7 @@
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
 
       <iron-image  src="{{localize('slice2src')}}"
-                   data-type="search"
+                   data-type="web"
                    alt="{{localize('slice2alt')}}"
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
 
@@ -181,12 +194,22 @@
       </div>
     </div>
 
+      <iron-ajax auto id="ajax"
+                 url="https://ca-mobile-si-dev-web2m.azurewebsites.net/"
+                 handle-as="json"
+                 last-response="{{ajaxResponse}}"></iron-ajax>
+
+
   </template>
 
   <script>
     Polymer({
 
       is: 'mobile-carousel',
+
+        setajax: function () {
+            console.log(this.$.ajax.lastResponse.data[0]);
+        },
 
       behaviors: [
         Polymer.AppLocalizeBehavior
@@ -197,6 +220,9 @@
       ],
 
       properties: {
+          repos: {
+              type: Array
+          },
         slideIndex: {
           type: Number,
           value: '0'
@@ -219,13 +245,13 @@
                   'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
                   'yes': 'Yes, I am',
                   'no': 'Not really',
-                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-en_mobile.jpg',
-                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/laptops_en_mobile.jpg',
+                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/appliances_en_mobile.jpg',
+                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/laptops_en_mobile.jpg',
                   'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_en_mobile.jpg',
                   'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
                   'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
-                  'img0alt': 'http://blog.bestbuy.ca/category/cool-gifts',
-                  'img1alt': 'laptop',
+                  'img0alt': 'currentoffers0enrchstring:"On Sale" AND Breville',
+                  'img1alt': 'currentoffers0enrchstring:"On Sale" AND Laptops',
                   'img2alt': '4k tv',
                   'img3alt': '10371746',
                   'dotdAlt': '10371746',
@@ -234,7 +260,7 @@
                   'slice3src': '../../images/slice3-en.png',
                   'slice4src': '../../images/slice4-en.png',
                   'slice5src': '../../images/slice5-en.png',
-                  'slice1alt': 'currentoffers0enrchstring:"As Advertised"',
+                  'slice1alt': 'currentoffers0enrchstring:"On Sale"',
                   'slice2alt': 'http://blog.bestbuy.ca/category/cool-gifts',
                   'slice3alt': '',
                   'slice4alt': '',
@@ -247,23 +273,23 @@
                   'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
                   'yes': 'Oui, je suis satisfait',
                   'no': 'Pas vraiment',
-                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-20/giftideas-fr_mobile.jpg',
-                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/laptops_fr_mobile.jpg',
+                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/appliances_fr_mobile.jpg',
+                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/laptops_fr_mobile.jpg',
                   'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_fr_mobile.jpg',
                   'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
                   'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
-                  'img0alt': 'http://blog.bestbuy.ca/category/cool-gifts',
-                  'img1alt': 'laptop',
+                  'img0alt': 'Breville',
+                  'img1alt': 'currentoffers0enrchstring:"En solde" AND Portables',
                   'img2alt': '4k tv',
                   'img3alt': '10371746',
                   'dotdAlt': '10371746',
-                  'slice1src': '../../images/slice1-en.png',
-                  'slice2src': '../../images/slice2-en.png',
-                  'slice3src': '../../images/slice3-en.png',
-                  'slice4src': '../../images/slice4-en.png',
-                  'slice5src': '../../images/slice5-en.png',
-                  'slice1alt': 'currentoffers0enrchstring:"Offres Publiées"',
-                  'slice2alt': 'http://blog.bestbuy.ca/category/cool-gifts',
+                  'slice1src': '../../images/slice1-fr.png',
+                  'slice2src': '../../images/slice2-fr.png',
+                  'slice3src': '../../images/slice3-fr.png',
+                  'slice4src': '../../images/slice4-fr.png',
+                  'slice5src': '../../images/slice5-fr.png',
+                  'slice1alt': 'currentoffers0enrchstring:"En solde"',
+                  'slice2alt': 'http://blogue.bestbuy.ca/category/cadeaux-parfaits',
                   'slice3alt': '',
                   'slice4alt': '',
                   'slice5alt': '',

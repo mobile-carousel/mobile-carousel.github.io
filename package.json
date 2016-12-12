@@ -1,0 +1,45 @@
+{
+  "name": "mobile-carousel",
+  "version": "1.0.0",
+  "description": "A mobile-first carousel",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"deploy:artifactory": "bbyc-zip | artifactory-deploy --releaseType=snapshot --fileExtension=zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://ecomm-tfs:8080/tfs/BestBuy_Canada/E-Commerce/_git/mobile-carousel"
+  },
+  "keywords": [
+    "carousel"
+  ],
+  "author": "Kit Brown-Watts",
+  "license": "ISC",
+  "bbycZip": {
+    "files": [
+      {
+        "fileLocation": "manifest.json",
+        "destinationPath": "manifest.json"
+      }
+	],
+    "patterns": [
+      {
+        "dirLocation": "build/unbundled",
+        "pattern": "**/*",
+        "destinationFolder": "/"
+      },
+      {
+        "dirLocation": "images",
+        "pattern": "**/*",
+        "destinationFolder": "images"
+      }
+    ]
+  },
+  "artifactoryDeploy": {
+    "repository": "mobile-apps"
+  }
+}
