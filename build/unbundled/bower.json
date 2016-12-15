@@ -1,0 +1,20 @@
+{
+  "name": "mobile-carousel",
+  "description": "A mobile-first carousel",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "app-localize-behavior": "PolymerElements/app-localize-behavior#^0.10.0",
+    "iron-location": "PolymerElements/iron-location#^0.8.9"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "iron-image": "PolymerElements/iron-image#^1.2.5",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^1.2.1",
+    "paper-radio-group": "PolymerElements/paper-radio-group#^1.2.1",
+    "iron-swipeable-pages": "metanov/iron-swipeable-pages#^1.2.6"
+  }
+}

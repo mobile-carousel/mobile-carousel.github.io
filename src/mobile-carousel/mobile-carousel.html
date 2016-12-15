@@ -13,9 +13,12 @@
     <style>
       :host {
         display: block;
+        margin-top: -2px;
+        overflow: hidden;
       }
       * {
         -webkit-tap-highlight-color: transparent;
+        text-align: center;
         font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
         font-weight: 500;
         -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -24,7 +27,7 @@
         user-select: none;          /* Likely future */
       }
       iron-swipeable-pages {
-        height: 350px;
+        height: 300px;
         width: 100vw;
         @apply(--layout-flex);
       }
@@ -35,7 +38,7 @@
         -ms-user-select: none;
         user-select: none;
         cursor: pointer;
-        width: 100vw;
+        width: 102%;
         height: 100%;
       }
 
@@ -48,7 +51,7 @@
         overflow-x: scroll;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
-        margin-top: -30px;
+        margin-top: -18px;
         padding-left: 8px;
         padding-right: 8px;
       }
@@ -57,6 +60,9 @@
         border: 1px solid rgba(0,0,0,0.1);
         cursor: pointer;
         border-radius: 2px;
+        width:110px;
+        height:80px;
+        background-color: #ffffff;
       }
       paper-radio-group {
         margin-top: -72px;
@@ -71,14 +77,11 @@
         height: 90%;
       }
       .carousel-container iron-image {
-        width:100%;
-        height:320px;
+        /*width:100%;*/
+        /*height:270px;*/
         background-color: #ffffff;
-      }
-      .container iron-image {
-        width:110px;
-        height:80px;
-        background-color: #ffffff;
+        width: 101%;
+        margin-left: -3px;
       }
       p {
         @apply(--paper-font-subhead);
@@ -95,52 +98,107 @@
       paper-button.primary {
         color: #0071C0;
       }
+      .hidden {
+        opacity: 0;
+        transition: 1s all ease-in-out;
+      }
     </style>
 
     <iron-location query="{{query}}">
     </iron-location>
 
-    <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
-      <div class="carousel-container">
-        <iron-image data-action="10382339" data-type="pdp" on-tap="tappedItem" sizing="cover" preload fade src="{{localize('img1')}}"
-                    style="width:100%; height:320px; background-color: #fff;"></iron-image>
-      </div>
-      <div>
-        <iron-image data-action="10381806" data-type="pdp" on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img2')}}"
-                    style="width:100%; height:320px; background-color: #fff;"></iron-image>
-      </div>
-      <div>
-        <iron-image data-action="10460630" data-type="pdp"  on-tap="tappedItem" sizing="contain" preload fade src="{{localize('img3')}}"
-                    style="width:100%; height:320px; background-color: #fff;"></iron-image>
-      </div>
+    <!--<iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('img0src')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('img0alt')}}"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('img1src')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('img1alt')}}"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('img2src')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="4k tv"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade style="width:98%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('dotdSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('dotdAlt')}}"-->
+                    <!--on-tap="tappedItem" sizing="cover" preload fade style="width:100%; height:280px; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+    <!--</iron-swipeable-pages>-->
+
+    <iron-swipeable-pages selected="{{slideIndex}}">
+      <template is="dom-repeat" items="[[ajaxResponse.data]]">
+
+        <div>
+          <iron-image src="[[item]]"
+                      data-type="search"
+                      alt="[[item]]"
+                      on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
+        </div>
+
+      </template>
     </iron-swipeable-pages>
 
     <div class="container">
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice1')}}" on-tap="tappedItem" data-action="deals"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice2')}}" on-tap="tappedItem" data-action="gifts"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice3')}}" on-tap="tappedItem" data-action="outlet"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice2')}}" on-tap="tappedItem" data-action="vr"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice1')}}" on-tap="tappedItem" data-action="tvs"></iron-image>
-      <iron-image  data-type="search" sizing="contain" preload fade src="{{localize('slice3')}}" on-tap="tappedItem" data-action="luggage"></iron-image>
+      <iron-image  src="{{localize('slice1src')}}"
+                   data-type="search"
+                   alt="{{localize('slice1alt')}}"
+                   on-tap="tappedItem" sizing="contain" preload fade></iron-image>
+
+      <iron-image  src="{{localize('slice4src')}}"
+                   data-type="web"
+                   alt="{{localize('flyer')}}"
+                   on-tap="tappedItem" sizing="contain" preload fade></iron-image>
+
+      <iron-image  src="{{localize('slice2src')}}"
+                   data-type="web"
+                   alt="{{localize('slice2alt')}}"
+                   on-tap="tappedItem" sizing="contain" preload fade></iron-image>
+
+      <!--<iron-image  src="{{localize('slice3src')}}"-->
+                   <!--data-type="search"-->
+                   <!--alt="{{localize('slice3alt')}}"-->
+                   <!--on-tap="tappedItem" sizing="contain" preload fade></iron-image>-->
+
+      <iron-image  src="{{localize('slice5src')}}"
+                   data-type="web"
+                   alt="{{localize('blog')}}"
+                   on-tap="tappedItem" sizing="contain" preload fade></iron-image>
     </div>
 
+    <div class="hidden" id="feedbackButtons">
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
-        <paper-button class="primary" on-tap="tappedEmail"
+        <paper-button class="primary" on-tap="tappedEmail" id="feedbackYes" disabled
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
-                      data-subject="Best Buy Canada App Feedback - I like the app"
-                      data-action="Feedback">
+                      data-subject="Best Buy Canada App Feedback - I like it!"
+                      alt="Feedback">
           {{localize('yes')}}
         </paper-button>
-        <paper-button on-tap="tappedEmail"
+        <paper-button on-tap="tappedEmail" id="feedbackNo" disabled
                       data-type="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
-                      data-subject="Best Buy Canada App Feedback - Issue report"
-                      data-action="Expected Result, Actual Result, Steps to Reproduce">
+                      data-subject="Best Buy Canada App Feedback - Reporting a problem"
+                      alt="Description:">
           {{localize('no')}}
         </paper-button>
       </div>
+    </div>
+
+      <iron-ajax auto id="ajax"
+                 url="https://ca-mobile-si-dev-web2m.azurewebsites.net/"
+                 handle-as="json"
+                 last-response="{{ajaxResponse}}"></iron-ajax>
+
 
   </template>
 
@@ -148,6 +206,10 @@
     Polymer({
 
       is: 'mobile-carousel',
+
+        setajax: function () {
+            console.log(this.$.ajax.lastResponse.data[0]);
+        },
 
       behaviors: [
         Polymer.AppLocalizeBehavior
@@ -158,6 +220,9 @@
       ],
 
       properties: {
+          repos: {
+              type: Array
+          },
         slideIndex: {
           type: Number,
           value: '0'
@@ -180,31 +245,83 @@
                   'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
                   'yes': 'Yes, I am',
                   'no': 'Not really',
-                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/twodaysale_en_mobile.jpg',
-                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/laptops_en_mobile.jpg',
-                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_fr_mobile.jpg',
-                  'slice1': '../../images/slice1-en.png',
-                  'slice2': '../../images/slice2-en.png',
-                  'slice3': '../../images/slice3-en.png'
+                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/appliances_en_mobile.jpg',
+                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/laptops_en_mobile.jpg',
+                  'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_en_mobile.jpg',
+                  'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
+                  'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
+                  'img0alt': 'currentoffers0enrchstring:"On Sale" AND Breville',
+                  'img1alt': 'currentoffers0enrchstring:"On Sale" AND Laptops',
+                  'img2alt': '4k tv',
+                  'img3alt': '10371746',
+                  'dotdAlt': '10371746',
+                  'slice1src': '../../images/slice1-en.png',
+                  'slice2src': '../../images/slice2-en.png',
+                  'slice3src': '../../images/slice3-en.png',
+                  'slice4src': '../../images/slice4-en.png',
+                  'slice5src': '../../images/slice5-en.png',
+                  'slice1alt': 'currentoffers0enrchstring:"On Sale"',
+                  'slice2alt': 'http://blog.bestbuy.ca/category/cool-gifts',
+                  'slice3alt': '',
+                  'slice4alt': '',
+                  'slice5alt': '',
+                  'gifts': 'http://blog.bestbuy.ca/category/cool-gifts',
+                  'flyer': 'http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2',
+                  'blog': 'http://blog.bestbuy.ca/'
                 },
                 'fr': {
                   'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
                   'yes': 'Oui, je suis satisfait',
                   'no': 'Pas vraiment',
-                  'img1': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/twodaysale_fr_mobile.jpg',
-                  'img2': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_10/oct-21/laptops_fr_mobile.jpg',
-                  'img3': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_04/apr-29/main_dotd_fr_mobile.jpg',
-                  'slice1': '../../images/slice1-fr.png',
-                  'slice2': '../../images/slice2-fr.png',
-                  'slice3': '../../images/slice3-fr.png'
+                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/appliances_fr_mobile.jpg',
+                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/laptops_fr_mobile.jpg',
+                  'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_fr_mobile.jpg',
+                  'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
+                  'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
+                  'img0alt': 'Breville',
+                  'img1alt': 'currentoffers0enrchstring:"En solde" AND Portables',
+                  'img2alt': '4k tv',
+                  'img3alt': '10371746',
+                  'dotdAlt': '10371746',
+                  'slice1src': '../../images/slice1-fr.png',
+                  'slice2src': '../../images/slice2-fr.png',
+                  'slice3src': '../../images/slice3-fr.png',
+                  'slice4src': '../../images/slice4-fr.png',
+                  'slice5src': '../../images/slice5-fr.png',
+                  'slice1alt': 'currentoffers0enrchstring:"En solde"',
+                  'slice2alt': 'http://blogue.bestbuy.ca/category/cadeaux-parfaits',
+                  'slice3alt': '',
+                  'slice4alt': '',
+                  'slice5alt': '',
+                  'gifts': 'http://blogue.bestbuy.ca/category/cadeaux-parfaits',
+                  'flyer': 'http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2',
+                  'blog': 'http://blogue.bestbuy.ca/'
                 }
             }
           }
         }
       },
 
+      ready: function() {
+        setTimeout(
+                function() {
+                  document.querySelector('iron-swipeable-pages').selectNext();
+                }, 3000);
+        setTimeout(
+                function() {
+                  document.querySelector('iron-swipeable-pages').selectNext();
+                }, 6000);
+        setTimeout(
+                function() {
+                  document.querySelector('#feedbackYes').disabled = false;
+                  document.querySelector('#feedbackNo').disabled= false;
+                  document.querySelector('#feedbackButtons').style.opacity = 1;
+                }, 16000);
+
+      },
+
       tappedItem: function(e) {
-        var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
+        var appActionData = Polymer.dom(e).localTarget.alt;
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
 
         try {
@@ -221,7 +338,7 @@
       tappedEmail: function(e) {
         var appEmailRecipient = Polymer.dom(e).localTarget.getAttribute('data-recipient');
         var appEmailSubject = Polymer.dom(e).localTarget.getAttribute('data-subject');
-        var appActionData = Polymer.dom(e).localTarget.getAttribute('data-action');
+        var appActionData = Polymer.dom(e).localTarget.alt;
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
 
         try {
@@ -238,7 +355,6 @@
       },
 
       onQueryChange: function(newValue, oldValue) {
-
         var langQueryString = newValue.split("lang=")[1] ? newValue.split("lang=")[1].split("&")[0] : this.language;
 
         // Get lang query string of url
