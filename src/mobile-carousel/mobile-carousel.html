@@ -15,31 +15,33 @@
         display: block;
         margin-top: -2px;
         overflow: hidden;
-      }
-      * {
-        -webkit-tap-highlight-color: transparent;
-        text-align: center;
-        font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
-        font-weight: 500;
-        -webkit-user-select: none;  /* Chrome all / Safari all */
-        -moz-user-select: none;     /* Firefox all */
-        -ms-user-select: none;      /* IE 10+ */
-        user-select: none;          /* Likely future */
-      }
-      iron-swipeable-pages {
-        height: 300px;
-        width: 100vw;
-        @apply(--layout-flex);
-      }
+        --iron-image-width: 100%;
+       }
+       * {
+         -webkit-tap-highlight-color: transparent;
+         text-align: center;
+         font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
+         font-weight: 500;
+         -webkit-user-select: none;  /* Chrome all / Safari all */
+         -moz-user-select: none;     /* Firefox all */
+         -ms-user-select: none;      /* IE 10+ */
+         user-select: none;          /* Likely future */
+       }
+       iron-swipeable-pages {
+         height: 117vw;
+         width: 100vw;
+         @apply(--layout-flex);
+         margin-bottom: 16px;
+       }
 
-      iron-swipeable-pages > * {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        cursor: pointer;
-        width: 102%;
-        height: 100%;
+       iron-swipeable-pages > * {
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+         cursor: pointer;
+         width: 100%;
+         height: 100%;
       }
 
       paper-radio-group, p, .centered {
@@ -107,38 +109,88 @@
     <iron-location query="{{query}}">
     </iron-location>
 
-    <iron-swipeable-pages selected="{{slideIndex}}">
-      <template is="dom-repeat" items="[[ajaxResponse.data]]">
+    <!--TEMPORARILY COMMENTED OUT UNTIL ENDPOINT IS ESTABLISHED-->
+    <!--<iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">-->
+      <!--<template is="dom-repeat" items="[[ajaxResponse.data]]">-->
 
-        <div>
-          <iron-image src="[[addMobileStaticUrlHost(item.srcLarge)]]"
-                      data-app-action$="[[item.action]]"
-                      data-app-data$="[[item.data]]"
-                      alt="[[addMobileStaticUrlHost(item.srcLarge)]]"
-                      on-tap="tappedItem" sizing="cover" preload fade  style="width:100%; height:280px; background-color: #fff;"></iron-image>
-        </div>
+        <!--<div>-->
+          <!--<iron-image src="[[addMobileStaticUrlHost(item.srcLarge)]]"-->
+                      <!--data-app-action$="[[item.action]]"-->
+                      <!--data-app-data$="[[item.data]]"-->
+                      <!--alt="[[addMobileStaticUrlHost(item.srcLarge)]]"-->
+                      <!--on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>-->
+        <!--</div>-->
 
-      </template>
+      <!--</template>-->
+    <!--</iron-swipeable-pages>-->
+
+    <iron-swipeable-pages id="ironCarousel" selected="{{slideIndex}}">
+      <div>
+        <iron-image src="{{localize('boxingDaySaleSrc')}}"
+                    data-type="search"
+                    alt="{{localize('boxingDaySaleAlt')}}"
+                    on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>
+      </div>
+      <div>
+        <iron-image src="{{localize('boxingDaySrc')}}"
+                    data-type="web"
+                    alt="{{localize('flyer')}}"
+                    on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>
+      </div>
+      <!--<div>-->
+        <!--<iron-image src="{{localize('laptopsSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('laptopsAlt')}}"-->
+                    <!--on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('dronesSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('dronesAlt')}}"-->
+                    <!--on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('wearablesSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('wearablesAlt')}}"-->
+                    <!--on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('appliancesSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('appliancesAlt')}}"-->
+                    <!--on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<iron-image src="{{localize('giftCardsSrc')}}"-->
+                    <!--data-type="search"-->
+                    <!--alt="{{localize('giftCardsAlt')}}"-->
+                    <!--on-tap="tappedItem" preload fade sizing="cover" style="width: 100%; height: 115vw; background-color: #fff;"></iron-image>-->
+      <!--</div>-->
     </iron-swipeable-pages>
 
     <div class="container">
       <iron-image  src="{{localize('slice1src')}}"
+                   data-type="search"
                    data-app-action="search"
                    alt="{{localize('slice1alt')}}"
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
 
       <iron-image  src="{{localize('slice4src')}}"
                    data-app-action="web"
+                   data-type="web"
                    alt="{{localize('flyer')}}"
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
 
       <iron-image  src="{{localize('slice2src')}}"
                    data-app-action="web"
+                   data-type="web"
                    alt="{{localize('slice2alt')}}"
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
 
       <iron-image  src="{{localize('slice5src')}}"
                    data-app-action="web"
+                   data-type="web"
                    alt="{{localize('blog')}}"
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
     </div>
@@ -146,27 +198,46 @@
     <div class="hidden" id="feedbackButtons">
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
-        <paper-button class="primary" on-tap="tappedEmail" id="feedbackYes" disabled
+        <paper-button on-tap="tappedEmail" class="primary" id="feedbackYes" disabled
                       data-app-action="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
-                      data-subject="Best Buy Canada App Feedback - I like it!"
-                      alt="Feedback">
+                      alt="{{localize('feedbackSubjectGreat')}}">
           {{localize('yes')}}
         </paper-button>
+        <!-- <paper-button class="primary" on-tap="tappedYes" id="feedbackYes" disabled
+                      alt="Feedback">
+          {{localize('yes')}}
+        </paper-button> -->
         <paper-button on-tap="tappedEmail" id="feedbackNo" disabled
                       data-app-action="email"
                       data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
-                      data-subject="Best Buy Canada App Feedback - Reporting a problem"
-                      alt="Description:">
+                      alt="{{localize('feedbackSubjectProblem')}}">
           {{localize('no')}}
         </paper-button>
       </div>
     </div>
 
-      <iron-ajax auto id="ajax"
-                 url="[[localizedImgApiUrl]]"
-                 handle-as="json"
-                 last-response="{{ajaxResponse}}"></iron-ajax>
+    <div class="hidden" id="feedbackReviewButtons">
+      <p>{{localize('feedbackRatingQuestion')}}</p>
+      <div class="centered">
+        <paper-button class="primary" on-tap="tappedYes" id="appStoreRateYes" disabled
+                      data-app-action="web"
+                      alt="Feedback">
+          {{localize('ratingYes')}}
+        </paper-button>
+        <paper-button on-tap="tappedEmail" id="appStoreRateNo" disabled
+                      data-app-action="email"
+                      data-recipient="support+3e9cc20aaef04d3ba52448394db16d86@feedback.hockeyapp.net"
+                      data-subject="Best Buy Canada App Feedback">
+          {{localize('ratingNo')}}
+        </paper-button>
+      </div>
+    </div>
+
+      <!--<iron-ajax auto id="ajax"-->
+                 <!--url="[[localizedImgApiUrl]]"-->
+                 <!--handle-as="json"-->
+                 <!--last-response="{{ajaxResponse}}"></iron-ajax>-->
                  <!-- <iron-ajax auto id="ajax"
                             url="mockedData.json"
                             handle-as="json"
@@ -224,59 +295,71 @@
             return {
                 'en': {
                   'feedbackQuestions': 'Are you enjoying the new Best Buy App?',
+                  'feedbackSubjectGreat': 'Best Buy Canada App Feedback - I like it!',
+                  'feedbackSubjectProblem': 'Best Buy Canada App Feedback - Reporting a problem',
                   'yes': 'Yes, I am',
                   'no': 'Not really',
-                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/appliances_en_mobile.jpg',
-                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/laptops_en_mobile.jpg',
-                  'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_en_mobile.jpg',
-                  'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
-                  'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_en_mobile.jpg',
-                  'img0alt': 'currentoffers0enrchstring:"On Sale" AND Breville',
-                  'img1alt': 'currentoffers0enrchstring:"On Sale" AND Laptops',
-                  'img2alt': '4k tv',
-                  'img3alt': '10371746',
-                  'dotdAlt': '10371746',
-                  'slice1src': '../../images/slice1-en.png',
-                  'slice2src': '../../images/slice2-en.png',
-                  'slice3src': '../../images/slice3-en.png',
-                  'slice4src': '../../images/slice4-en.png',
-                  'slice5src': '../../images/slice5-en.png',
+                  'boxingDaySaleSrc': '/../../images/bd_en.jpg',
+                  'boxingDaySaleAlt': 'currentoffers0enrchstring:"On Sale"',
+                  'boxingDaySrc': '/../../images/bd-flyer_en.jpg',
+                  'boxingDayAlt': 'currentoffers0enrchstring:"On Sale"',
+                  'laptopsSrc': '/../../images/laptop-en_mobile.jpg',
+                  'laptopsAlt': 'currentoffers0enrchstring:"On Sale" AND laptop',
+                  'dronesSrc': '/../../images/drones-en_mobile.jpg',
+                  'dronesAlt': 'currentoffers0enrchstring:"On Sale" AND drone',
+                  'wearablesSrc': '/../../images/wearable-en_mobile.jpg',
+                  'wearablesAlt': 'currentoffers0enrchstring:"On Sale" AND (vr OR fitbit or smartwatch OR activity)',
+                  'appliancesSrc': '/../../images/appliance-en_mobile.jpg',
+                  'appliancesAlt': 'currentoffers0enrchstring:"On Sale" AND category_level0:"Appliances"',
+                  'giftCardsSrc': '/../../images/giftcards_en.jpg',
+                  'giftCardsAlt': 'gift cards',
+                  'slice1src': '/../../images/slice1-en.png',
+                  'slice2src': '/../../images/slice2-en.png',
+                  'slice3src': '/../../images/slice3-en.png',
+                  'slice4src': '/../../images/slice4-en.png',
+                  'slice5src': '/../../images/slice5-en.png',
                   'slice1alt': 'currentoffers0enrchstring:"On Sale"',
                   'slice2alt': 'http://blog.bestbuy.ca/category/cool-gifts',
-                  'slice3alt': '',
-                  'slice4alt': '',
-                  'slice5alt': '',
                   'gifts': 'http://blog.bestbuy.ca/category/cool-gifts',
                   'flyer': 'http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2',
-                  'blog': 'http://blog.bestbuy.ca/'
+                  'blog': 'http://blog.bestbuy.ca/',
+                  'feedbackRatingQuestion': 'Great! Would you mind giving us a rating?',
+                  'ratingYes': 'Sure',
+                  'ratingNo': 'Not now'
                 },
                 'fr': {
                   'feedbackQuestions': 'Appreciez-vous la nouvelle application Best Buy?',
+                  'feedbackSubjectGreat': 'Best Buy Canada App Feedback - Jaime ça!',
+                  'feedbackSubjectProblem': 'Best Buy Canada App Feedback - Signaler un problème',
                   'yes': 'Oui, je suis satisfait',
                   'no': 'Pas vraiment',
-                  'img0src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/appliances_fr_mobile.jpg',
-                  'img1src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-09/laptops_fr_mobile.jpg',
-                  'img2src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_12/dec-02/tv_fr_mobile.jpg',
-                  'img3src': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
-                  'dotdSrc': 'https://images.bbycastatic.ca/m/projects/_weekly/assets/2016_11/nov-04/mth_main_dotd_fr_mobile.jpg',
-                  'img0alt': 'Breville',
-                  'img1alt': 'currentoffers0enrchstring:"En solde" AND Portables',
-                  'img2alt': '4k tv',
-                  'img3alt': '10371746',
-                  'dotdAlt': '10371746',
-                  'slice1src': '../../images/slice1-fr.png',
-                  'slice2src': '../../images/slice2-fr.png',
-                  'slice3src': '../../images/slice3-fr.png',
-                  'slice4src': '../../images/slice4-fr.png',
-                  'slice5src': '../../images/slice5-fr.png',
+                  'boxingDaySaleSrc': '/../../images/bd_fr.jpg',
+                  'boxingDaySaleAlt': 'currentoffers0enrchstring:"En solde"',
+                  'boxingDaySrc': '/../../images/bd-flyer_fr.jpg',
+                  'boxingDayAlt': 'currentoffers0enrchstring:"En solde"',
+                  'laptopsSrc': '/../../images/laptop-fr_mobile.jpg',
+                  'laptopsAlt': 'currentoffers0enrchstring:"En solde" AND portables',
+                  'dronesSrc': '/../../images/drones-fr_mobile.jpg',
+                  'dronesAlt': 'currentoffers0enrchstring:"En solde" AND drones',
+                  'wearablesSrc': '/../../images/wearable-fr_mobile.jpg',
+                  'wearablesAlt': 'currentoffers0enrchstring:"En solde" AND (fitbit OR vr OR smartwatch OR Moniteurs d’activité)',
+                  'appliancesSrc': '/../../images/appliance-fr_mobile.jpg',
+                  'appliancesAlt': 'currentoffers0enrchstring:"En solde" AND category_level0:"Électroménagers"',
+                  'giftCardsSrc': '/../../images/giftcards_fr.jpg',
+                  'giftCardsAlt': 'carte-cadeaux',
+                  'slice1src': '/../../images/slice1-fr.png',
+                  'slice2src': '/../../images/slice2-fr.png',
+                  'slice3src': '/../../images/slice3-fr.png',
+                  'slice4src': '/../../images/slice4-fr.png',
+                  'slice5src': '/../../images/slice5-fr.png',
                   'slice1alt': 'currentoffers0enrchstring:"En solde"',
                   'slice2alt': 'http://blogue.bestbuy.ca/category/cadeaux-parfaits',
-                  'slice3alt': '',
-                  'slice4alt': '',
-                  'slice5alt': '',
                   'gifts': 'http://blogue.bestbuy.ca/category/cadeaux-parfaits',
                   'flyer': 'http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2',
-                  'blog': 'http://blogue.bestbuy.ca/'
+                  'blog': 'http://blogue.bestbuy.ca/',
+                  'feedbackRatingQuestion': 'Génial! Voulez-vous évaluer notre appli?',
+                  'ratingYes': 'Bien sûr',
+                  'ratingNo': 'Pas maintenant'
                 }
             }
           }
@@ -297,41 +380,79 @@
                   document.querySelector('#feedbackYes').disabled = false;
                   document.querySelector('#feedbackNo').disabled= false;
                   document.querySelector('#feedbackButtons').style.opacity = 1;
-                }, 16000);
+                }, 12000);
 
       },
 
       tappedItem: function(e) {
         var appActionData = Polymer.dom(e).localTarget.alt;
-        var appActionType = Polymer.dom(e).localTarget.getAttribute('data-app-action');
+        var appActionType = Polymer.dom(e).localTarget.getAttribute('data-type');
 
         try {
           webkit.messageHandlers.messageReciever.postMessage({
             actionType: appActionType,
             actionData: appActionData
-            });
+          });
         }
         catch(err) {
-          console.log('The native context does not exist yet:'+ appActionData + ' ' + appActionType);
+          console.log('You tapped "'+ appActionType + '" using this data:\n' + appActionData);
         }
       },
+//      TEMP COMMENTED OUT UNTIL APPROPRIATE ENDPOINT IS ESTABLISHED
+//      tappedItem: function(e) {
+//        var appActionData = Polymer.dom(e).localTarget.getAttribute('data-app-data');
+//        var appActionType = Polymer.dom(e).localTarget.getAttribute('data-app-action');
+//
+//        try {
+//          webkit.messageHandlers.messageReciever.postMessage({
+//            actionType: appActionType,
+//            actionData: appActionData
+//            });
+//        }
+//        catch(err) {
+//          console.log('You tapped "'+ appActionType + '" using this data:\n' + appActionData);
+//        }
+//      },
 
       tappedEmail: function(e) {
         var appEmailRecipient = Polymer.dom(e).localTarget.getAttribute('data-recipient');
-        var appEmailSubject = Polymer.dom(e).localTarget.getAttribute('data-subject');
-        var appActionData = Polymer.dom(e).localTarget.alt;
+        var appEmailSubject = Polymer.dom(e).localTarget.alt;
         var appActionType = Polymer.dom(e).localTarget.getAttribute('data-app-action');
 
         try {
           webkit.messageHandlers.messageReciever.postMessage({
             actionType: appActionType,
-            actionData: appActionData,
             emailRecipient: appEmailRecipient,
             emailSubject: appEmailSubject
           });
         }
         catch(err) {
-          console.log('The native context does not exist yet:'+ appEmailRecipient + ' ' + appEmailSubject + ' ' + appActionData + ' ' + appActionType);
+          console.log('You tapped "'+ appActionType + '" to\n' + appEmailRecipient + '\nwith this subject:\n' + appEmailSubject);
+//          console.log('The native context does not exist yet:'+ appEmailRecipient + ' ' + appEmailSubject + ' ' + appActionType);
+        }
+      },
+
+      tappedYes: function () {
+        document.querySelector('#feedbackButtons').style.opacity = 0;
+        setTimeout(
+                function() {
+                  document.querySelector('#feedbackButtons').style.display = "none";
+                  document.querySelector('#feedbackYes').disabled = true;
+                  document.querySelector('#feedbackNo').disabled= true;
+                  document.querySelector('#appStoreRateYes').disabled = false;
+                  document.querySelector('#appStoreRateNo').disabled= false;
+                  document.querySelector('#feedbackReviewButtons').style.opacity = 1;
+                }, 800);
+
+        try {
+          webkit.messageHandlers.messageReciever.postMessage({
+            actionType: "external",
+            actionData: "https://itunes.apple.com/ca/app/best-buy-canada/id386960831"
+          });
+
+        }
+        catch(err) {
+          console.log('The native context does not exist yet:'+ "web" + ' ' + "itunes");
         }
       },
 
