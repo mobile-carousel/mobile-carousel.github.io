@@ -5,6 +5,10 @@
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 
 
@@ -19,7 +23,6 @@
        }
        * {
          -webkit-tap-highlight-color: transparent;
-         text-align: center;
          font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
          font-weight: 500;
          -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -45,6 +48,7 @@
       }
 
       paper-radio-group, p, .centered {
+        text-align: center;
         @apply(--layout-horizontal);
         @apply(--layout-center-justified);
       }
@@ -103,6 +107,38 @@
       .hidden {
         opacity: 0;
         transition: 1s all ease-in-out;
+      }
+      paper-item, li {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-font-smoothing: antialiased;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        position: relative;
+        min-height: 48px;
+        padding: 0px 16px;
+      }
+      paper-item:focus {
+        outline: 1px solid var(--paper-blue-300);
+      }
+      paper-listbox {
+        display: block;
+        padding: 8px 2px;
+      }
+      .admin {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .admin iron-swipeable-pages {
+        height: 480px;
       }
     </style>
 
@@ -217,7 +253,7 @@
       </div>
     </div>
 
-    <div class="hidden" id="feedbackReviewButtons">
+    <div class="hidden" id="feedbackReviewButtons" style="display: none">
       <p>{{localize('feedbackRatingQuestion')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedYes" id="appStoreRateYes" disabled
@@ -232,6 +268,87 @@
           {{localize('ratingNo')}}
         </paper-button>
       </div>
+    </div>
+
+    <div class="admin">
+      <paper-dropdown-menu label="Select a slide" value="{{slideIndex}}" vertical-align="bottom" horizontal-align="right">
+        <paper-listbox class="dropdown-content">
+          <paper-item>0</paper-item>
+          <paper-item>1</paper-item>
+          <!--<paper-item>2</paper-item>-->
+          <!--<paper-item>3</paper-item>-->
+        </paper-listbox>
+      </paper-dropdown-menu>
+
+      <iron-swipeable-pages selected="{{slideIndex}}">
+      <!--<template is="dom-repeat" items="[[ajaxResponse.data]]">-->
+
+        <div>
+        <paper-input label="Image URL" value="https://images.bbycastatic.ca/m/projects/_weekly/assets/2017_01/jan-06/x2/cs-shopall_en_mobile.jpg"></paper-input>
+
+        <paper-dropdown-menu label="Action Type">
+          <paper-listbox class="dropdown-content">
+            <paper-item>Search</paper-item>
+            <paper-item>Web</paper-item>
+            <paper-item>Flyer</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
+
+        <paper-input label="Action input"></paper-input>
+
+        <ul>
+          <li>
+            <paper-checkbox>On Sale</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>As Advertised</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>AND</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>Brand</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>Category</paper-checkbox>
+          </li>
+        </ul>
+        </div>
+
+        <div>
+          <paper-input label="Image URL" value="https://images.bbycastatic.ca/m/projects/_weekly/assets/2017_01/jan-06/x2/cs-shopall_en_mobile.jpg"></paper-input>
+
+          <paper-dropdown-menu label="Action Type">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Search</paper-item>
+              <paper-item>Web</paper-item>
+              <paper-item>Flyer</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+
+          <paper-input label="Action input"></paper-input>
+
+          <ul>
+            <li>
+              <paper-checkbox>On Sale</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>As Advertised</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>AND</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>Brand</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>Category</paper-checkbox>
+            </li>
+          </ul>
+        </div>
+      <!--</template>-->
+      </iron-swipeable-pages>
+
     </div>
 
       <!--<iron-ajax auto id="ajax"-->
@@ -267,6 +384,10 @@
         imgApiUrl: {
           type: String,
           value: "https://ca-mobile-si-dev-web2m-dev.azurewebsites.net/"
+        },
+        img1URL: {
+          type: String,
+          value: "/../../images/bd_en.jpg"
         },
         repos: {
             type: Array

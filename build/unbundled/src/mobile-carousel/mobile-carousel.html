@@ -5,6 +5,10 @@
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/app-localize-behavior/app-localize-behavior.html">
 
 
@@ -19,7 +23,6 @@
        }
        * {
          -webkit-tap-highlight-color: transparent;
-         text-align: center;
          font-family: 'Avenir Next', 'Open Sans', 'Roboto', Arial;
          font-weight: 500;
          -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -45,6 +48,7 @@
       }
 
       paper-radio-group, p, .centered {
+        text-align: center;
         @apply(--layout-horizontal);
         @apply(--layout-center-justified);
       }
@@ -103,6 +107,38 @@
       .hidden {
         opacity: 0;
         transition: 1s all ease-in-out;
+      }
+      paper-item, li {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-font-smoothing: antialiased;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        position: relative;
+        min-height: 48px;
+        padding: 0px 16px;
+      }
+      paper-item:focus {
+        outline: 1px solid var(--paper-blue-300);
+      }
+      paper-listbox {
+        display: block;
+        padding: 8px 2px;
+      }
+      .admin {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .admin iron-swipeable-pages {
+        height: 480px;
       }
     </style>
 
@@ -186,7 +222,7 @@
       </div>
     </div>
 
-    <div class="hidden" id="feedbackReviewButtons">
+    <div class="hidden" id="feedbackReviewButtons" style="display: none">
       <p>{{localize('feedbackRatingQuestion')}}</p>
       <div class="centered">
         <paper-button class="primary" on-tap="tappedYes" id="appStoreRateYes" disabled="" data-app-action="web" alt="Feedback">
@@ -198,6 +234,87 @@
       </div>
     </div>
 
+    <div class="admin">
+      <paper-dropdown-menu label="Select a slide" value="{{slideIndex}}" vertical-align="bottom" horizontal-align="right">
+        <paper-listbox class="dropdown-content">
+          <paper-item>0</paper-item>
+          <paper-item>1</paper-item>
+          
+          
+        </paper-listbox>
+      </paper-dropdown-menu>
+
+      <iron-swipeable-pages selected="{{slideIndex}}">
+      
+
+        <div>
+        <paper-input label="Image URL" value="https://images.bbycastatic.ca/m/projects/_weekly/assets/2017_01/jan-06/x2/cs-shopall_en_mobile.jpg"></paper-input>
+
+        <paper-dropdown-menu label="Action Type">
+          <paper-listbox class="dropdown-content">
+            <paper-item>Search</paper-item>
+            <paper-item>Web</paper-item>
+            <paper-item>Flyer</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
+
+        <paper-input label="Action input"></paper-input>
+
+        <ul>
+          <li>
+            <paper-checkbox>On Sale</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>As Advertised</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>AND</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>Brand</paper-checkbox>
+          </li>
+          <li>
+            <paper-checkbox>Category</paper-checkbox>
+          </li>
+        </ul>
+        </div>
+
+        <div>
+          <paper-input label="Image URL" value="https://images.bbycastatic.ca/m/projects/_weekly/assets/2017_01/jan-06/x2/cs-shopall_en_mobile.jpg"></paper-input>
+
+          <paper-dropdown-menu label="Action Type">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Search</paper-item>
+              <paper-item>Web</paper-item>
+              <paper-item>Flyer</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+
+          <paper-input label="Action input"></paper-input>
+
+          <ul>
+            <li>
+              <paper-checkbox>On Sale</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>As Advertised</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>AND</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>Brand</paper-checkbox>
+            </li>
+            <li>
+              <paper-checkbox>Category</paper-checkbox>
+            </li>
+          </ul>
+        </div>
+      
+      </iron-swipeable-pages>
+
+    </div>
+
       
                  
                  
@@ -207,6 +324,6 @@
 
   </template>
 
-  <script>Polymer({is:"mobile-carousel",behaviors:[Polymer.AppLocalizeBehavior],observers:["onQueryChange(query)"],properties:{mobileStaticUrl:{type:String,value:"http://images.bbycastatic.ca/m"},imgApiUrl:{type:String,value:"https://ca-mobile-si-dev-web2m-dev.azurewebsites.net/"},repos:{type:Array},slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"},query:{type:String},language:{type:String,value:"en"},localizedImgApiUrl:{type:String,value:this.imgApiUrl+this.language},resources:{value:function(){return{en:{feedbackQuestions:"Are you enjoying the new Best Buy App?",feedbackSubjectGreat:"Best Buy Canada App Feedback - I like it!",feedbackSubjectProblem:"Best Buy Canada App Feedback - Reporting a problem",yes:"Yes, I am",no:"Not really",boxingDaySaleSrc:"/../../images/bd_en.jpg",boxingDaySaleAlt:'currentoffers0enrchstring:"On Sale"',boxingDaySrc:"/../../images/bd-flyer_en.jpg",boxingDayAlt:'currentoffers0enrchstring:"On Sale"',laptopsSrc:"/../../images/laptop-en_mobile.jpg",laptopsAlt:'currentoffers0enrchstring:"On Sale" AND laptop',dronesSrc:"/../../images/drones-en_mobile.jpg",dronesAlt:'currentoffers0enrchstring:"On Sale" AND drone',wearablesSrc:"/../../images/wearable-en_mobile.jpg",wearablesAlt:'currentoffers0enrchstring:"On Sale" AND (vr OR fitbit or smartwatch OR activity)',appliancesSrc:"/../../images/appliance-en_mobile.jpg",appliancesAlt:'currentoffers0enrchstring:"On Sale" AND category_level0:"Appliances"',giftCardsSrc:"/../../images/giftcards_en.jpg",giftCardsAlt:"gift cards",slice1src:"/../../images/slice1-en.png",slice2src:"/../../images/slice2-en.png",slice3src:"/../../images/slice3-en.png",slice4src:"/../../images/slice4-en.png",slice5src:"/../../images/slice5-en.png",slice1alt:'currentoffers0enrchstring:"On Sale"',slice2alt:"http://blog.bestbuy.ca/category/cool-gifts",gifts:"http://blog.bestbuy.ca/category/cool-gifts",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2",blog:"http://blog.bestbuy.ca/",feedbackRatingQuestion:"Great! Would you mind giving us a rating?",ratingYes:"Sure",ratingNo:"Not now"},fr:{feedbackQuestions:"Appreciez-vous la nouvelle application Best Buy?",feedbackSubjectGreat:"Best Buy Canada App Feedback - Jaime ça!",feedbackSubjectProblem:"Best Buy Canada App Feedback - Signaler un problème",yes:"Oui, je suis satisfait",no:"Pas vraiment",boxingDaySaleSrc:"/../../images/bd_fr.jpg",boxingDaySaleAlt:'currentoffers0enrchstring:"En solde"',boxingDaySrc:"/../../images/bd-flyer_fr.jpg",boxingDayAlt:'currentoffers0enrchstring:"En solde"',laptopsSrc:"/../../images/laptop-fr_mobile.jpg",laptopsAlt:'currentoffers0enrchstring:"En solde" AND portables',dronesSrc:"/../../images/drones-fr_mobile.jpg",dronesAlt:'currentoffers0enrchstring:"En solde" AND drones',wearablesSrc:"/../../images/wearable-fr_mobile.jpg",wearablesAlt:'currentoffers0enrchstring:"En solde" AND (fitbit OR vr OR smartwatch OR Moniteurs d’activité)',appliancesSrc:"/../../images/appliance-fr_mobile.jpg",appliancesAlt:'currentoffers0enrchstring:"En solde" AND category_level0:"Électroménagers"',giftCardsSrc:"/../../images/giftcards_fr.jpg",giftCardsAlt:"carte-cadeaux",slice1src:"/../../images/slice1-fr.png",slice2src:"/../../images/slice2-fr.png",slice3src:"/../../images/slice3-fr.png",slice4src:"/../../images/slice4-fr.png",slice5src:"/../../images/slice5-fr.png",slice1alt:'currentoffers0enrchstring:"En solde"',slice2alt:"http://blogue.bestbuy.ca/category/cadeaux-parfaits",gifts:"http://blogue.bestbuy.ca/category/cadeaux-parfaits",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2",blog:"http://blogue.bestbuy.ca/",feedbackRatingQuestion:"Génial! Voulez-vous évaluer notre appli?",ratingYes:"Bien sûr",ratingNo:"Pas maintenant"}}}}},ready:function(){setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},3e3),setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},6e3),setTimeout(function(){document.querySelector("#feedbackYes").disabled=!1,document.querySelector("#feedbackNo").disabled=!1,document.querySelector("#feedbackButtons").style.opacity=1},12e3)},tappedItem:function(e){var t=Polymer.dom(e).localTarget.alt,a=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:a,actionData:t})}catch(e){console.log('You tapped "'+a+'" using this data:\n'+t)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),a=Polymer.dom(e).localTarget.alt,r=Polymer.dom(e).localTarget.getAttribute("data-app-action");try{webkit.messageHandlers.messageReciever.postMessage({actionType:r,emailRecipient:t,emailSubject:a})}catch(e){console.log('You tapped "'+r+'" to\n'+t+"\nwith this subject:\n"+a)}},tappedYes:function(){document.querySelector("#feedbackButtons").style.opacity=0,setTimeout(function(){document.querySelector("#feedbackButtons").style.display="none",document.querySelector("#feedbackYes").disabled=!0,document.querySelector("#feedbackNo").disabled=!0,document.querySelector("#appStoreRateYes").disabled=!1,document.querySelector("#appStoreRateNo").disabled=!1,document.querySelector("#feedbackReviewButtons").style.opacity=1},800);try{webkit.messageHandlers.messageReciever.postMessage({actionType:"external",actionData:"https://itunes.apple.com/ca/app/best-buy-canada/id386960831"})}catch(e){console.log("The native context does not exist yet:web itunes")}},onQueryChange:function(e,t){var a=e.split("lang=")[1]?e.split("lang=")[1].split("&")[0]:this.language;"en"!==a&&"fr"!==a||(this.language=a,this.localizedImgApiUrl=this.imgApiUrl+this.language)},addMobileStaticUrlHost:function(e){return this.mobileStaticUrl+e}});</script>
+  <script>Polymer({is:"mobile-carousel",behaviors:[Polymer.AppLocalizeBehavior],observers:["onQueryChange(query)"],properties:{mobileStaticUrl:{type:String,value:"http://images.bbycastatic.ca/m"},imgApiUrl:{type:String,value:"https://ca-mobile-si-dev-web2m-dev.azurewebsites.net/"},img1URL:{type:String,value:"/../../images/bd_en.jpg"},repos:{type:Array},slideIndex:{type:Number,value:"0"},appActionType:{type:String,value:"pdp"},query:{type:String},language:{type:String,value:"en"},localizedImgApiUrl:{type:String,value:this.imgApiUrl+this.language},resources:{value:function(){return{en:{feedbackQuestions:"Are you enjoying the new Best Buy App?",feedbackSubjectGreat:"Best Buy Canada App Feedback - I like it!",feedbackSubjectProblem:"Best Buy Canada App Feedback - Reporting a problem",yes:"Yes, I am",no:"Not really",boxingDaySaleSrc:"/../../images/bd_en.jpg",boxingDaySaleAlt:'currentoffers0enrchstring:"On Sale"',boxingDaySrc:"/../../images/bd-flyer_en.jpg",boxingDayAlt:'currentoffers0enrchstring:"On Sale"',laptopsSrc:"/../../images/laptop-en_mobile.jpg",laptopsAlt:'currentoffers0enrchstring:"On Sale" AND laptop',dronesSrc:"/../../images/drones-en_mobile.jpg",dronesAlt:'currentoffers0enrchstring:"On Sale" AND drone',wearablesSrc:"/../../images/wearable-en_mobile.jpg",wearablesAlt:'currentoffers0enrchstring:"On Sale" AND (vr OR fitbit or smartwatch OR activity)',appliancesSrc:"/../../images/appliance-en_mobile.jpg",appliancesAlt:'currentoffers0enrchstring:"On Sale" AND category_level0:"Appliances"',giftCardsSrc:"/../../images/giftcards_en.jpg",giftCardsAlt:"gift cards",slice1src:"/../../images/slice1-en.png",slice2src:"/../../images/slice2-en.png",slice3src:"/../../images/slice3-en.png",slice4src:"/../../images/slice4-en.png",slice5src:"/../../images/slice5-en.png",slice1alt:'currentoffers0enrchstring:"On Sale"',slice2alt:"http://blog.bestbuy.ca/category/cool-gifts",gifts:"http://blog.bestbuy.ca/category/cool-gifts",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=en&type=2",blog:"http://blog.bestbuy.ca/",feedbackRatingQuestion:"Great! Would you mind giving us a rating?",ratingYes:"Sure",ratingNo:"Not now"},fr:{feedbackQuestions:"Appreciez-vous la nouvelle application Best Buy?",feedbackSubjectGreat:"Best Buy Canada App Feedback - Jaime ça!",feedbackSubjectProblem:"Best Buy Canada App Feedback - Signaler un problème",yes:"Oui, je suis satisfait",no:"Pas vraiment",boxingDaySaleSrc:"/../../images/bd_fr.jpg",boxingDaySaleAlt:'currentoffers0enrchstring:"En solde"',boxingDaySrc:"/../../images/bd-flyer_fr.jpg",boxingDayAlt:'currentoffers0enrchstring:"En solde"',laptopsSrc:"/../../images/laptop-fr_mobile.jpg",laptopsAlt:'currentoffers0enrchstring:"En solde" AND portables',dronesSrc:"/../../images/drones-fr_mobile.jpg",dronesAlt:'currentoffers0enrchstring:"En solde" AND drones',wearablesSrc:"/../../images/wearable-fr_mobile.jpg",wearablesAlt:'currentoffers0enrchstring:"En solde" AND (fitbit OR vr OR smartwatch OR Moniteurs d’activité)',appliancesSrc:"/../../images/appliance-fr_mobile.jpg",appliancesAlt:'currentoffers0enrchstring:"En solde" AND category_level0:"Électroménagers"',giftCardsSrc:"/../../images/giftcards_fr.jpg",giftCardsAlt:"carte-cadeaux",slice1src:"/../../images/slice1-fr.png",slice2src:"/../../images/slice2-fr.png",slice3src:"/../../images/slice3-fr.png",slice4src:"/../../images/slice4-fr.png",slice5src:"/../../images/slice5-fr.png",slice1alt:'currentoffers0enrchstring:"En solde"',slice2alt:"http://blogue.bestbuy.ca/category/cadeaux-parfaits",gifts:"http://blogue.bestbuy.ca/category/cadeaux-parfaits",flyer:"http://flyer.bestbuy.ca/h/m/bestbuy?locale=fr&type=2",blog:"http://blogue.bestbuy.ca/",feedbackRatingQuestion:"Génial! Voulez-vous évaluer notre appli?",ratingYes:"Bien sûr",ratingNo:"Pas maintenant"}}}}},ready:function(){setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},3e3),setTimeout(function(){document.querySelector("iron-swipeable-pages").selectNext()},6e3),setTimeout(function(){document.querySelector("#feedbackYes").disabled=!1,document.querySelector("#feedbackNo").disabled=!1,document.querySelector("#feedbackButtons").style.opacity=1},12e3)},tappedItem:function(e){var t=Polymer.dom(e).localTarget.alt,a=Polymer.dom(e).localTarget.getAttribute("data-type");try{webkit.messageHandlers.messageReciever.postMessage({actionType:a,actionData:t})}catch(e){console.log('You tapped "'+a+'" using this data:\n'+t)}},tappedEmail:function(e){var t=Polymer.dom(e).localTarget.getAttribute("data-recipient"),a=Polymer.dom(e).localTarget.alt,r=Polymer.dom(e).localTarget.getAttribute("data-app-action");try{webkit.messageHandlers.messageReciever.postMessage({actionType:r,emailRecipient:t,emailSubject:a})}catch(e){console.log('You tapped "'+r+'" to\n'+t+"\nwith this subject:\n"+a)}},tappedYes:function(){document.querySelector("#feedbackButtons").style.opacity=0,setTimeout(function(){document.querySelector("#feedbackButtons").style.display="none",document.querySelector("#feedbackYes").disabled=!0,document.querySelector("#feedbackNo").disabled=!0,document.querySelector("#appStoreRateYes").disabled=!1,document.querySelector("#appStoreRateNo").disabled=!1,document.querySelector("#feedbackReviewButtons").style.opacity=1},800);try{webkit.messageHandlers.messageReciever.postMessage({actionType:"external",actionData:"https://itunes.apple.com/ca/app/best-buy-canada/id386960831"})}catch(e){console.log("The native context does not exist yet:web itunes")}},onQueryChange:function(e,t){var a=e.split("lang=")[1]?e.split("lang=")[1].split("&")[0]:this.language;"en"!==a&&"fr"!==a||(this.language=a,this.localizedImgApiUrl=this.imgApiUrl+this.language)},addMobileStaticUrlHost:function(e){return this.mobileStaticUrl+e}});</script>
 </dom-module>
 </body></html>
