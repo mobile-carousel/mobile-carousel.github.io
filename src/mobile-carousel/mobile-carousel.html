@@ -231,7 +231,7 @@
                    on-tap="tappedItem" sizing="contain" preload fade></iron-image>
     </div>
 
-    <div class="hidden" id="feedbackButtons">
+    <div class="hidden" id="feedbackButtons" style="display: none">
       <p>{{localize('feedbackQuestions')}}</p>
       <div class="centered">
         <paper-button on-tap="tappedEmail" class="primary" id="feedbackYes" disabled
@@ -286,33 +286,36 @@
         <div>
         <paper-input label="Image URL" value="https://images.bbycastatic.ca/m/projects/_weekly/assets/2017_01/jan-06/x2/cs-shopall_en_mobile.jpg"></paper-input>
 
-        <paper-dropdown-menu label="Action Type">
-          <paper-listbox class="dropdown-content">
-            <paper-item>Search</paper-item>
-            <paper-item>Web</paper-item>
-            <paper-item>Flyer</paper-item>
-          </paper-listbox>
-        </paper-dropdown-menu>
+          <paper-dropdown-menu label="Action Type">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Search</paper-item>
+              <paper-item>Web</paper-item>
+              <paper-item>Flyer</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
 
-        <paper-input label="Action input"></paper-input>
+          <paper-dropdown-menu label="Special">
+            <paper-listbox class="dropdown-content">
+              <paper-item>On Sale</paper-item>
+              <paper-item>As Advertised</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
 
-        <ul>
-          <li>
-            <paper-checkbox>On Sale</paper-checkbox>
-          </li>
-          <li>
-            <paper-checkbox>As Advertised</paper-checkbox>
-          </li>
-          <li>
-            <paper-checkbox>AND</paper-checkbox>
-          </li>
-          <li>
-            <paper-checkbox>Brand</paper-checkbox>
-          </li>
-          <li>
-            <paper-checkbox>Category</paper-checkbox>
-          </li>
-        </ul>
+          <paper-dropdown-menu label="Category">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Laptops</paper-item>
+              <paper-item>Appliances</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+
+          <paper-dropdown-menu label="Brand">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Samsung</paper-item>
+              <paper-item>Kitchenaid</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+
+          <paper-input label="Custom Search Input"></paper-input>
         </div>
 
         <div>
@@ -326,25 +329,29 @@
             </paper-listbox>
           </paper-dropdown-menu>
 
-          <paper-input label="Action input"></paper-input>
+          <paper-dropdown-menu label="Special">
+            <paper-listbox class="dropdown-content">
+              <paper-item>On Sale</paper-item>
+              <paper-item>As Advertised</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
 
-          <ul>
-            <li>
-              <paper-checkbox>On Sale</paper-checkbox>
-            </li>
-            <li>
-              <paper-checkbox>As Advertised</paper-checkbox>
-            </li>
-            <li>
-              <paper-checkbox>AND</paper-checkbox>
-            </li>
-            <li>
-              <paper-checkbox>Brand</paper-checkbox>
-            </li>
-            <li>
-              <paper-checkbox>Category</paper-checkbox>
-            </li>
-          </ul>
+          <paper-dropdown-menu label="Category">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Laptops</paper-item>
+              <paper-item>Appliances</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+
+          <paper-dropdown-menu label="Brand">
+            <paper-listbox class="dropdown-content">
+              <paper-item>Samsung</paper-item>
+              <paper-item>Kitchenaid</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+
+          <paper-input label="Custom Search Input"></paper-input>
+
         </div>
       <!--</template>-->
       </iron-swipeable-pages>
